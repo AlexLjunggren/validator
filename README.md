@@ -84,7 +84,7 @@ Validates variable equals given value
 
 ```java
 @ExactMatchValidation(match = "toMatch")
-@ExactMatchValidation(matches = {"PST", MST", "CST", "EST"})
+@ExactMatchValidation(matches = {"PST", "MST", "CST", "EST"})
 ```
 
 Data types supported
