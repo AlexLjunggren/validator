@@ -9,7 +9,6 @@ import com.ljunggren.validator.evaluation.LengthEvaluation;
 
 public class LengthValidationChain extends ValidationChain {
 	
-
 	@Override
 	public void validate(Annotation annotation, Item item) {
 		if (annotation.annotationType() == LengthValidation.class && canHandleType(item)) {
@@ -21,20 +20,6 @@ public class LengthValidationChain extends ValidationChain {
 			return;
 		}
 		nextChain.validate(annotation, item);
-	}
-	
-	private boolean canHandleType(Item item) {
-		Object value = item.getValue();
-		return value instanceof String ||
-				value instanceof Integer ||
-				value instanceof Long;
-	}
-	
-	private String getValue(Item item) {
-		Object value = item.getValue();
-		if (value instanceof Integer) return String.valueOf((int) value);
-		if (value instanceof Long) return String.valueOf((long) value);
-		return (String) value;
 	}
 	
 }

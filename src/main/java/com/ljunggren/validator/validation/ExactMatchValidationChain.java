@@ -23,20 +23,6 @@ public class ExactMatchValidationChain extends ValidationChain {
 		nextChain.validate(annotation, item);
 	}
 
-	private boolean canHandleType(Item item) {
-		Object value = item.getValue();
-		return value instanceof String ||
-				value instanceof Integer ||
-				value instanceof Long;
-	}
-	
-	private String getValue(Item item) {
-		Object value = item.getValue();
-		if (value instanceof Integer) return String.valueOf((int) value);
-		if (value instanceof Long) return String.valueOf((long) value);
-		return (String) value;
-	}
-	
 	private Evaluation getEvaluation(Annotation annotation) {
 		ExactMatchValidation validation = (ExactMatchValidation) annotation;
 		String[] valuesToMatch = validation.matches();

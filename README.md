@@ -113,6 +113,17 @@ Data types supported
 - Integer
 - Long
 
+## Not Null Validation ##
+
+Validates variable is not null
+
+```java
+@NotNullValidation
+```
+
+Data types supported
+- Any Object
+
 ## Optional Validation ##
 
 Will override all other validations if variable is null

@@ -15,6 +15,7 @@ import com.ljunggren.validator.validation.CatchAllValidationChain;
 import com.ljunggren.validator.validation.EmailValidationChain;
 import com.ljunggren.validator.validation.ExactMatchValidationChain;
 import com.ljunggren.validator.validation.LengthValidationChain;
+import com.ljunggren.validator.validation.NotNullValidationChain;
 
 import lombok.Getter;
 
@@ -83,8 +84,9 @@ public class Validator {
 				new EmailValidationChain().nextChain(
 				new ExactMatchValidationChain().nextChain(
 				new LengthValidationChain().nextChain(
+				new NotNullValidationChain().nextChain(
 				new CatchAllValidationChain()
-						))))).validate(annotation, item);
+						)))))).validate(annotation, item);
 	}
 	
 	private boolean containsOptionalValidation(Item item) {
