@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.reflect.FieldUtils;
 
+import com.ljunggren.validator.annotation.OptionalValidation;
 import com.ljunggren.validator.validation.AlphaNumericValidationChain;
 import com.ljunggren.validator.validation.AlphaValidationChain;
 import com.ljunggren.validator.validation.CatchAllValidationChain;
@@ -73,6 +74,10 @@ public class Validator {
 	}
 	
 	private void validationChain(Annotation annotation, Item item) {
+		if (containsOptionalValidation(item) && item.getValue() == null) {
+			new CatchAllValidationChain().validate(annotation, item);
+			return;
+		}
 		new AlphaNumericValidationChain().nextChain(
 				new AlphaValidationChain().nextChain(
 				new EmailValidationChain().nextChain(
@@ -80,6 +85,10 @@ public class Validator {
 				new LengthValidationChain().nextChain(
 				new CatchAllValidationChain()
 						))))).validate(annotation, item);
+	}
+	
+	private boolean containsOptionalValidation(Item item) {
+		return item.getField().getAnnotation(OptionalValidation.class) != null;
 	}
 
 }

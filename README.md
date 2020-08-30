@@ -103,3 +103,14 @@ Data types supported
 - String
 - Integer
 - Long
+
+## Optional Validation ##
+
+Will override all other validations if variable is null
+
+```java
+@OptionalValidation
+```
+
+Data types supported
+- Any Object
