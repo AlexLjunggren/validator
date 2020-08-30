@@ -47,7 +47,7 @@ items.get(0).getErrorMessage();
 
 ## Alpha Validation ##
 
-Validates variable consistis of only letters
+Validates variable consists of only letters
 
 ```java
 @AlphaValidation
@@ -58,7 +58,7 @@ Data types supported
 
 ## AlphaNumeric Validation ##
 
-Validates variable consistis of only letters and/or numbers
+Validates variable consists of only letters and/or numbers
 
 ```java
 @AlphaNumericValidation
