@@ -19,7 +19,10 @@ public class ExactMatchValidationChainTest {
 	@Data
 	private class ExactMatchPojo {
 		@ExactMatchValidation(match = "Alex")
-		private String name;
+		private String firstName;
+		
+		@ExactMatchValidation(match = "Ljunggren", caseSensitive = false)
+		private String lastName;
 		
 		@ExactMatchValidation(match = "46123")
 		private int zipCode;
@@ -38,7 +41,7 @@ public class ExactMatchValidationChainTest {
 	
 	@Before
 	public void setup() {
-		pojo = new ExactMatchPojo("Alex", 46123, 100000, "EST", 2020);
+		pojo = new ExactMatchPojo("Alex", "Ljunggren", 46123, 100000, "EST", 2020);
 	}
 
 	@Test
@@ -49,8 +52,25 @@ public class ExactMatchValidationChainTest {
 	}
 
 	@Test
-	public void validateInvalidNameTest() {
-		pojo.setName("alex");
+	public void validateInvalidFirstNameTest() {
+		pojo.setFirstName("alex");
+		Validator validator = new Validator(pojo).validate();
+		assertFalse(validator.isValid());
+		assertEquals(1, validator.getInvalidItems().size());
+		assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
+	}
+
+	@Test
+	public void validateLastNameTest() {
+		pojo.setLastName("ljunggren");
+		Validator validator = new Validator(pojo).validate();
+		assertTrue(validator.isValid());
+		assertEquals(0, validator.getInvalidItems().size());
+	}
+
+	@Test
+	public void validateInvalidLastNameTest() {
+		pojo.setLastName("noname");
 		Validator validator = new Validator(pojo).validate();
 		assertFalse(validator.isValid());
 		assertEquals(1, validator.getInvalidItems().size());

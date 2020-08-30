@@ -11,6 +11,7 @@ public @interface ExactMatchValidation {
 
 	String match() default NULL;
 	String[] matches() default {};
+	boolean caseSensitive() default true;
 	
 	public static final String NULL = "THIS IS A SPECIAL NULL VALUE - DO NOT USE";
 }

@@ -83,14 +83,22 @@ Data types supported
 Validates variable equals given value
 
 ```java
-@ExactMatchValidation(match = "toMatch")
+@ExactMatchValidation(match = "match")
+@ExactMatchValidation(match = "match", caseSensitive = false)
 @ExactMatchValidation(matches = {"PST", "MST", "CST", "EST"})
 ```
+
+Options
+- match - Match given value
+- matches - Match any of the given values
+- caseSensitive
 
 Data types supported
 - String
 - Integer
 - Long
+
+**Note:** matches array will override match string
 
 ## Length Validation ##
 

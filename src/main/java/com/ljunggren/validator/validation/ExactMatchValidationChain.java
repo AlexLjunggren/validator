@@ -38,15 +38,17 @@ public class ExactMatchValidationChain extends ValidationChain {
 	}
 	
 	private Evaluation getEvaluation(Annotation annotation) {
-		String[] valuesToMatch = ((ExactMatchValidation) annotation).matches();
+		ExactMatchValidation validation = (ExactMatchValidation) annotation;
+		String[] valuesToMatch = validation.matches();
+		boolean caseSensitive = validation.caseSensitive();
 		if (valuesToMatch.length > 0) {
-			return new ExactMatchesEvaluation(valuesToMatch);
+			return new ExactMatchesEvaluation(valuesToMatch, caseSensitive);
 		}
-		String valueToMatch = ((ExactMatchValidation) annotation).match();
+		String valueToMatch = validation.match();
 		if (valueToMatch == ExactMatchValidation.NULL) {
 			valueToMatch = null;
 		}
-		return new ExactMatchEvaluation(valueToMatch);
+		return new ExactMatchEvaluation(valueToMatch, caseSensitive);
 	}
 	
 }
