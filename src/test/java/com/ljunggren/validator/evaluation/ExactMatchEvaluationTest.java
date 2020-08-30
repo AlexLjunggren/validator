@@ -6,21 +6,19 @@ import org.junit.Test;
 
 public class ExactMatchEvaluationTest {
 
-	private Evaluation evaluation = new EmailEvaluation();
-
 	@Test
 	public void evaluationTest() {
-		assertTrue(evaluation.evaluateAgainst("user@email.com"));
-		assertTrue(evaluation.evaluateAgainst("USER@EMAIL.COM"));
-		assertTrue(evaluation.evaluateAgainst("user@us.email.com"));
-		assertFalse(evaluation.evaluateAgainst("user@email"));
-		assertFalse(evaluation.evaluateAgainst("user.com"));
-		assertFalse(evaluation.evaluateAgainst(null));
+		assertTrue(new ExactMatchEvaluation("test").evaluateAgainst("test"));
+		assertTrue(new ExactMatchEvaluation("1234").evaluateAgainst("1234"));
+		assertTrue(new ExactMatchEvaluation("").evaluateAgainst(""));
+		assertFalse(new ExactMatchEvaluation("test").evaluateAgainst("1234"));
+		assertFalse(new ExactMatchEvaluation("test").evaluateAgainst(null));
+		assertFalse(new ExactMatchEvaluation(null).evaluateAgainst("test"));
 	}
 
 	@Test
 	public void errorMessageTest() {
-		assertTrue(!evaluation.getErrorMessage().isEmpty());
+		assertTrue(!new ExactMatchEvaluation("test").getErrorMessage().isEmpty());
 	}
 
 }

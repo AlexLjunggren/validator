@@ -9,6 +9,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface ExactMatchValidation {
 
-	String match();
+	String match() default NULL;
+	String[] matches() default {};
 	
+	public static final String NULL = "THIS IS A SPECIAL NULL VALUE - DO NOT USE";
 }

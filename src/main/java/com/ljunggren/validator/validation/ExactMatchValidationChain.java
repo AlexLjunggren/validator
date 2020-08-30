@@ -6,14 +6,14 @@ import com.ljunggren.validator.Item;
 import com.ljunggren.validator.annotation.ExactMatchValidation;
 import com.ljunggren.validator.evaluation.Evaluation;
 import com.ljunggren.validator.evaluation.ExactMatchEvaluation;
+import com.ljunggren.validator.evaluation.ExactMatchesEvaluation;
 
 public class ExactMatchValidationChain extends ValidationChain {
 	
 	@Override
 	public void validate(Annotation annotation, Item item) {
 		if (annotation.annotationType() == ExactMatchValidation.class && canHandleType(item)) {
-			String valueToMatch = ((ExactMatchValidation) annotation).match();
-			Evaluation evaluation = new ExactMatchEvaluation(valueToMatch);
+			Evaluation evaluation = getEvaluation(annotation);
 			if (!evaluation.evaluateAgainst(getValue(item))) {
 				item.setErrorMessage(evaluation.getErrorMessage());
 				return;
@@ -35,6 +35,18 @@ public class ExactMatchValidationChain extends ValidationChain {
 		if (value instanceof Integer) return String.valueOf((int) value);
 		if (value instanceof Long) return String.valueOf((long) value);
 		return (String) value;
+	}
+	
+	private Evaluation getEvaluation(Annotation annotation) {
+		String[] valuesToMatch = ((ExactMatchValidation) annotation).matches();
+		if (valuesToMatch.length > 0) {
+			return new ExactMatchesEvaluation(valuesToMatch);
+		}
+		String valueToMatch = ((ExactMatchValidation) annotation).match();
+		if (valueToMatch == ExactMatchValidation.NULL) {
+			valueToMatch = null;
+		}
+		return new ExactMatchEvaluation(valueToMatch);
 	}
 	
 }

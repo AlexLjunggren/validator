@@ -26,13 +26,19 @@ public class ExactMatchValidationChainTest {
 		
 		@ExactMatchValidation(match = "100000")
 		private long salary;
+		
+		@ExactMatchValidation(matches = {"PST", "MST", "CST", "EST"})
+		private String timeZone;
+		
+		@ExactMatchValidation(matches = {"1999", "2020", "2021"})
+		private int year;
 	}
 	
 	private ExactMatchPojo pojo;
 	
 	@Before
 	public void setup() {
-		pojo = new ExactMatchPojo("Alex", 46123, 100000);
+		pojo = new ExactMatchPojo("Alex", 46123, 100000, "EST", 2020);
 	}
 
 	@Test
@@ -69,4 +75,46 @@ public class ExactMatchValidationChainTest {
 		assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
 	}
 
+	@Test
+	public void validateInvalidTimeZoneTest() {
+		pojo.setTimeZone("GMT");
+		Validator validator = new Validator(pojo).validate();
+		assertFalse(validator.isValid());
+		assertEquals(1, validator.getInvalidItems().size());
+		assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
+	}
+
+	@Test
+	public void validateInvalidYearTest() {
+		pojo.setYear(1998);
+		Validator validator = new Validator(pojo).validate();
+		assertFalse(validator.isValid());
+		assertEquals(1, validator.getInvalidItems().size());
+		assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
+	}
+
+	@AllArgsConstructor
+	@Data
+	private class ExactMatchNoArgsPojo {
+		@ExactMatchValidation()
+		private String name;
+		
+		@ExactMatchValidation()
+		private String timeZone;
+	}
+	
+	@Test
+	public void validateNoArgsInvalidTest() {
+		ExactMatchNoArgsPojo pojo = new ExactMatchNoArgsPojo("Alex", "EST");
+		Validator validator = new Validator(pojo).validate();
+		assertFalse(validator.isValid());
+	}
+	
+	@Test
+	public void validateNoArgsTest() {
+		ExactMatchNoArgsPojo pojo = new ExactMatchNoArgsPojo("", "");
+		Validator validator = new Validator(pojo).validate();
+		assertFalse(validator.isValid());
+	}
+	
 }
