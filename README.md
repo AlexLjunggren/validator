@@ -95,8 +95,7 @@ Options
 
 Data types supported
 - String
-- Integer
-- Long
+- Number
 
 **Note:** matches array will override match string
 

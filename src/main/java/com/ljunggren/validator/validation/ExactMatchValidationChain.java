@@ -14,7 +14,7 @@ public class ExactMatchValidationChain extends ValidationChain {
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == ExactMatchValidation.class && canHandleType(item)) {
             Evaluation evaluation = getEvaluation(annotation);
-            if (!evaluation.evaluateAgainst(getValue(item))) {
+            if (!evaluation.evaluateAgainst(item.getValue().toString())) {
                 item.setErrorMessage(evaluation.getErrorMessage());
                 return;
             }
@@ -39,16 +39,7 @@ public class ExactMatchValidationChain extends ValidationChain {
 
     private boolean canHandleType(Item item) {
         Object value = item.getValue();
-        return value instanceof String || value instanceof Integer || value instanceof Long;
-    }
-
-    private String getValue(Item item) {
-        Object value = item.getValue();
-        if (value instanceof Integer)
-            return String.valueOf((int) value);
-        if (value instanceof Long)
-            return String.valueOf((long) value);
-        return (String) value;
+        return value instanceof String || value instanceof Number;
     }
 
 }
