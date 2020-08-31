@@ -12,17 +12,17 @@ import lombok.AllArgsConstructor;
 
 public class CatchAllValidationChainTest {
 
-	@AllArgsConstructor
-	private class Pojo {
-		@AlphaNumericValidation
-		private int name;
-	}
+    @AllArgsConstructor
+    private class Pojo {
+        @AlphaNumericValidation
+        private int name;
+    }
 
-	@Test
-	public void validateTest() {
-		Validator validator = new Validator(new Pojo(1234)).validate();
-		assertTrue(validator.isValid());
-		assertEquals(0, validator.getInvalidItems().size());
-	}
+    @Test
+    public void validateTest() {
+        Validator validator = new Validator(new Pojo(1234)).validate();
+        assertTrue(validator.isValid());
+        assertEquals(0, validator.getInvalidItems().size());
+    }
 
 }

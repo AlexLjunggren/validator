@@ -6,9 +6,9 @@ import com.ljunggren.validator.Item;
 
 public class CatchAllValidationChain extends ValidationChain {
 
-	@Override
-	public void validate(Annotation annotation, Item item) {
-		return;
-	}
+    @Override
+    public void validate(Annotation annotation, Item item) {
+        return;
+    }
 
 }

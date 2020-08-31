@@ -8,20 +8,20 @@ import com.ljunggren.validator.evaluation.AlphaNumericEvaluation;
 import com.ljunggren.validator.evaluation.Evaluation;
 
 public class AlphaNumericValidationChain extends ValidationChain {
-	
-	private Class<?> annotationClass = AlphaNumericValidation.class;
-	private Evaluation evaluation = new AlphaNumericEvaluation();
 
-	@Override
-	public void validate(Annotation annotation, Item item) {
-		if (annotation.annotationType() == annotationClass && item.getValue() instanceof String) {
-			if (!evaluation.evaluateAgainst((String) item.getValue())) {
-				item.setErrorMessage(evaluation.getErrorMessage());
-				return;
-			}
-			return;
-		}
-		nextChain.validate(annotation, item);
-	}
+    private Class<?> annotationClass = AlphaNumericValidation.class;
+    private Evaluation evaluation = new AlphaNumericEvaluation();
+
+    @Override
+    public void validate(Annotation annotation, Item item) {
+        if (annotation.annotationType() == annotationClass && item.getValue() instanceof String) {
+            if (!evaluation.evaluateAgainst((String) item.getValue())) {
+                item.setErrorMessage(evaluation.getErrorMessage());
+                return;
+            }
+            return;
+        }
+        nextChain.validate(annotation, item);
+    }
 
 }

@@ -14,26 +14,26 @@ import lombok.Data;
 
 public class NotNullValidationChainTest {
 
-	@AllArgsConstructor
-	@Data
-	private class NotNullPojo {
-		@NotNullValidation
-		private String name;
-	}
+    @AllArgsConstructor
+    @Data
+    private class NotNullPojo {
+        @NotNullValidation
+        private String name;
+    }
 
-	@Test
-	public void validateTest() {
-		Validator validator = new Validator(new NotNullPojo("Alex")).validate();
-		assertTrue(validator.isValid());
-		assertEquals(0, validator.getInvalidItems().size());
-	}
+    @Test
+    public void validateTest() {
+        Validator validator = new Validator(new NotNullPojo("Alex")).validate();
+        assertTrue(validator.isValid());
+        assertEquals(0, validator.getInvalidItems().size());
+    }
 
-	@Test
-	public void validateInvalidTest() {
-		Validator validator = new Validator(new NotNullPojo(null)).validate();
-		assertFalse(validator.isValid());
-		assertEquals(1, validator.getInvalidItems().size());
-		assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
-	}
+    @Test
+    public void validateInvalidTest() {
+        Validator validator = new Validator(new NotNullPojo(null)).validate();
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getInvalidItems().size());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
+    }
 
 }

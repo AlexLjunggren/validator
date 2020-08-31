@@ -19,60 +19,60 @@ import lombok.Data;
 
 public class NotEmptyValidationChainTest {
 
-	@AllArgsConstructor
-	@Data
-	private class NotEmptyPojo {
-		@NotEmptyValidation
-		private String[] names;
-		
-		@NotEmptyValidation
-		private List<Integer> years;
-		
-		@NotEmptyValidation
-		private String document;
-	}
-	
-	private NotEmptyPojo pojo;
-	
-	@Before
-	public void setup() {
-		String[] names = {"Alex", "John", "Sarah"};
-		List<Integer> years = Arrays.asList(new Integer[] {2019, 2020, 2021});
-		pojo = new NotEmptyPojo(names, years, "Document");
-	}
+    @AllArgsConstructor
+    @Data
+    private class NotEmptyPojo {
+        @NotEmptyValidation
+        private String[] names;
 
-	@Test
-	public void validateTest() {
-		Validator validator = new Validator(pojo).validate();
-		assertTrue(validator.isValid());
-		assertEquals(0, validator.getInvalidItems().size());
-	}
+        @NotEmptyValidation
+        private List<Integer> years;
 
-	@Test
-	public void validateInvalidNamesTest() {
-		pojo.setNames(new String[] {});
-		Validator validator = new Validator(pojo).validate();
-		assertFalse(validator.isValid());
-		assertEquals(1, validator.getInvalidItems().size());
-		assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
-	}
+        @NotEmptyValidation
+        private String document;
+    }
 
-	@Test
-	public void validateInvalidYearsTest() {
-		pojo.setYears(new ArrayList<Integer>());
-		Validator validator = new Validator(pojo).validate();
-		assertFalse(validator.isValid());
-		assertEquals(1, validator.getInvalidItems().size());
-		assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
-	}
+    private NotEmptyPojo pojo;
 
-	@Test
-	public void validateInvalidDocumentTest() {
-		pojo.setDocument("");
-		Validator validator = new Validator(pojo).validate();
-		assertFalse(validator.isValid());
-		assertEquals(1, validator.getInvalidItems().size());
-		assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
-	}
+    @Before
+    public void setup() {
+        String[] names = { "Alex", "John", "Sarah" };
+        List<Integer> years = Arrays.asList(new Integer[] { 2019, 2020, 2021 });
+        pojo = new NotEmptyPojo(names, years, "Document");
+    }
+
+    @Test
+    public void validateTest() {
+        Validator validator = new Validator(pojo).validate();
+        assertTrue(validator.isValid());
+        assertEquals(0, validator.getInvalidItems().size());
+    }
+
+    @Test
+    public void validateInvalidNamesTest() {
+        pojo.setNames(new String[] {});
+        Validator validator = new Validator(pojo).validate();
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getInvalidItems().size());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
+    }
+
+    @Test
+    public void validateInvalidYearsTest() {
+        pojo.setYears(new ArrayList<Integer>());
+        Validator validator = new Validator(pojo).validate();
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getInvalidItems().size());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
+    }
+
+    @Test
+    public void validateInvalidDocumentTest() {
+        pojo.setDocument("");
+        Validator validator = new Validator(pojo).validate();
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getInvalidItems().size());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
+    }
 
 }

@@ -8,20 +8,20 @@ import com.ljunggren.validator.evaluation.EmailEvaluation;
 import com.ljunggren.validator.evaluation.Evaluation;
 
 public class EmailValidationChain extends ValidationChain {
-	
-	private Class<?> annotationClass = EmailValidation.class;
-	private Evaluation evaluation = new EmailEvaluation();
 
-	@Override
-	public void validate(Annotation annotation, Item item) {
-		if (annotation.annotationType() == annotationClass && item.getValue() instanceof String) {
-			if (!evaluation.evaluateAgainst((String) item.getValue())) {
-				item.setErrorMessage(evaluation.getErrorMessage());
-				return;
-			}
-			return;
-		}
-		nextChain.validate(annotation, item);
-	}
+    private Class<?> annotationClass = EmailValidation.class;
+    private Evaluation evaluation = new EmailEvaluation();
+
+    @Override
+    public void validate(Annotation annotation, Item item) {
+        if (annotation.annotationType() == annotationClass && item.getValue() instanceof String) {
+            if (!evaluation.evaluateAgainst((String) item.getValue())) {
+                item.setErrorMessage(evaluation.getErrorMessage());
+                return;
+            }
+            return;
+        }
+        nextChain.validate(annotation, item);
+    }
 
 }

@@ -91,7 +91,7 @@ Validates variable equals given value
 Options
 - match - Match given value
 - matches - Match any of the given values
-- caseSensitive
+- caseSensitive - Default: true
 
 Data types supported
 - String
