@@ -20,7 +20,7 @@ public class EmailEvaluationTest {
 
     @Test
     public void errorMessageTest() {
-        assertTrue(!evaluation.getErrorMessage().isEmpty());
+        assertEquals("Must be a valid email", evaluation.getErrorMessage());
     }
 
 }

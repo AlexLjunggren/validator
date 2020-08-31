@@ -1,5 +1,6 @@
 package com.ljunggren.validator.evaluation;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -21,7 +22,7 @@ public class AlphaNumericEvaluationTest {
 
     @Test
     public void errorMessageTest() {
-        assertTrue(!evaluation.getErrorMessage().isEmpty());
+        assertEquals("Must be alphanumeric", evaluation.getErrorMessage());
     }
 
 }

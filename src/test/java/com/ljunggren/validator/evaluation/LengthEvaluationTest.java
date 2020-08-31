@@ -17,7 +17,7 @@ public class LengthEvaluationTest {
 
     @Test
     public void errorMessageTest() {
-        assertTrue(!new LengthEvaluation(4).getErrorMessage().isEmpty());
+        assertEquals("Must be of length 4", new LengthEvaluation(4).getErrorMessage());
     }
 
 }

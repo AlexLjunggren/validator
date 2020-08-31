@@ -26,7 +26,7 @@ public class ExactMatchesEvaluation implements Evaluation {
 
     @Override
     public String getErrorMessage() {
-        return String.format("Value must be on of the following: %s", String.join(", ", matches));
+        return String.format("Value must be one of the following: %s", String.join(", ", matches));
     }
 
 }

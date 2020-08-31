@@ -28,7 +28,7 @@ public class ExactMatchEvaluationTest {
 
     @Test
     public void errorMessageTest() {
-        assertTrue(!new ExactMatchEvaluation("test", true).getErrorMessage().isEmpty());
+        assertEquals("Value must be 'Test'", new ExactMatchEvaluation("Test", false).getErrorMessage());
     }
 
 }

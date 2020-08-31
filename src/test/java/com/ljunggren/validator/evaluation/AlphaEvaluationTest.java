@@ -21,7 +21,7 @@ public class AlphaEvaluationTest {
 
     @Test
     public void errorMessageTest() {
-        assertTrue(!evaluation.getErrorMessage().isEmpty());
+        assertEquals("Must be all letters", evaluation.getErrorMessage());
     }
 
 }
