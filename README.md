@@ -113,6 +113,19 @@ Data types supported
 - Integer
 - Long
 
+## Not Empty Validation ##
+
+Validates variable is not empty
+
+```java
+@NotEmptyValidation
+```
+
+Data types supported
+- String
+- Array
+- Collection
+
 ## Not Null Validation ##
 
 Validates variable is not null

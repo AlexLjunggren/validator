@@ -15,18 +15,4 @@ public abstract class ValidationChain {
 	
 	public abstract void validate(Annotation annotation, Item item);
 	
-	protected boolean canHandleType(Item item) {
-		Object value = item.getValue();
-		return value instanceof String ||
-				value instanceof Integer ||
-				value instanceof Long;
-	}
-	
-	protected String getValue(Item item) {
-		Object value = item.getValue();
-		if (value instanceof Integer) return String.valueOf((int) value);
-		if (value instanceof Long) return String.valueOf((long) value);
-		return (String) value;
-	}
-	
 }
