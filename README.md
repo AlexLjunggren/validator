@@ -107,6 +107,9 @@ Validates variable is of given length
 @LengthValidation(length = 4)
 ```
 
+Required
+- length - [int]
+
 Data types supported
 - String
 - Integer
@@ -124,6 +127,7 @@ Data types supported
 - String
 - Array
 - Collection
+- Map
 
 ## Not Null Validation ##
 
@@ -146,3 +150,17 @@ Will override all other validations if variable is null
 
 Data types supported
 - Any Object
+
+## Regex Validation ##
+
+Validates variable matches given regex
+
+```java
+@RegexValidation(regex = "^[a-zA-Z]+$")
+```
+
+Required
+- regex - [String]
+
+Data types supported
+- String

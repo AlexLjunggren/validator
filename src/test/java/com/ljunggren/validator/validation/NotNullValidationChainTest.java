@@ -33,7 +33,7 @@ public class NotNullValidationChainTest {
         Validator validator = new Validator(new NotNullPojo(null)).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
-        assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
+        assertEquals("Cannot be null", validator.getInvalidItems().get(0).getErrorMessage());
     }
 
 }
