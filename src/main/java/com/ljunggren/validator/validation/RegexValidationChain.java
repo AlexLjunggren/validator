@@ -16,7 +16,7 @@ public class RegexValidationChain extends ValidationChain {
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == annotationClass && item.getValue() instanceof String) {
             String regex = ((RegexValidation) annotation).regex();
-            Evaluation evaluation = new RegexEvaluation(regex);
+            Evaluation<String> evaluation = new RegexEvaluation(regex);
             if (!evaluation.evaluateAgainst(item.getValue().toString())) {
                 item.setErrorMessage(evaluation.getErrorMessage());
                 return;

@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class AlphaEvaluationTest {
 
-    private Evaluation evaluation = new AlphaEvaluation();
+    private Evaluation<String> evaluation = new AlphaEvaluation();
 
     @Test
     public void evaluationTest() {

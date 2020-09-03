@@ -10,7 +10,7 @@ import com.ljunggren.validator.evaluation.Evaluation;
 public class AlphaValidationChain extends ValidationChain {
 
     private Class<?> annotationClass = AlphaValidation.class;
-    private Evaluation evaluation = new AlphaEvaluation();
+    private Evaluation<String> evaluation = new AlphaEvaluation();
 
     @Override
     public void validate(Annotation annotation, Item item) {

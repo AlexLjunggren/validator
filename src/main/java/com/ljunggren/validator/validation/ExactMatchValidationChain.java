@@ -13,7 +13,7 @@ public class ExactMatchValidationChain extends ValidationChain {
     @Override
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == ExactMatchValidation.class && canHandleType(item)) {
-            Evaluation evaluation = getEvaluation(annotation);
+            Evaluation<String> evaluation = getEvaluation(annotation);
             if (!evaluation.evaluateAgainst(item.getValue().toString())) {
                 item.setErrorMessage(evaluation.getErrorMessage());
                 return;
@@ -23,7 +23,7 @@ public class ExactMatchValidationChain extends ValidationChain {
         nextChain.validate(annotation, item);
     }
 
-    private Evaluation getEvaluation(Annotation annotation) {
+    private Evaluation<String> getEvaluation(Annotation annotation) {
         ExactMatchValidation validation = (ExactMatchValidation) annotation;
         String[] valuesToMatch = validation.matches();
         boolean caseSensitive = validation.caseSensitive();

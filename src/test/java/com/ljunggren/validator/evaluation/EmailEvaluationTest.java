@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class EmailEvaluationTest {
 
-    private Evaluation evaluation = new EmailEvaluation();
+    private Evaluation<String> evaluation = new EmailEvaluation();
 
     @Test
     public void evaluationTest() {

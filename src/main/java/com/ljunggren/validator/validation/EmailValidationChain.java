@@ -10,7 +10,7 @@ import com.ljunggren.validator.evaluation.Evaluation;
 public class EmailValidationChain extends ValidationChain {
 
     private Class<?> annotationClass = EmailValidation.class;
-    private Evaluation evaluation = new EmailEvaluation();
+    private Evaluation<String> evaluation = new EmailEvaluation();
 
     @Override
     public void validate(Annotation annotation, Item item) {

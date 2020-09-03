@@ -1,6 +1,6 @@
 package com.ljunggren.validator.evaluation;
 
-public class ExactMatchEvaluation implements Evaluation {
+public class ExactMatchEvaluation implements Evaluation<String> {
 
     private String match = "";
     private boolean caseSensitive;

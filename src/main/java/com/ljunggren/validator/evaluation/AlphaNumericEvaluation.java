@@ -1,6 +1,6 @@
 package com.ljunggren.validator.evaluation;
 
-public class AlphaNumericEvaluation implements Evaluation {
+public class AlphaNumericEvaluation implements Evaluation<String> {
 
     private final String regex = "^[a-zA-Z0-9]+$";
 

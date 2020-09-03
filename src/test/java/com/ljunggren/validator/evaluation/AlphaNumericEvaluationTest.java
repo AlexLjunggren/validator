@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class AlphaNumericEvaluationTest {
 
-    private Evaluation evaluation = new AlphaNumericEvaluation();
+    private Evaluation<String> evaluation = new AlphaNumericEvaluation();
 
     @Test
     public void evaluationTest() {

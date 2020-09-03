@@ -1,6 +1,6 @@
 package com.ljunggren.validator.evaluation;
 
-public class RegexEvaluation implements Evaluation {
+public class RegexEvaluation implements Evaluation<String> {
     
     private String regex;
 

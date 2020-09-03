@@ -1,8 +1,8 @@
 package com.ljunggren.validator.evaluation;
 
-public interface Evaluation {
+public interface Evaluation<T> {
 
-    boolean evaluateAgainst(String value);
+    boolean evaluateAgainst(T value);
 
     String getErrorMessage();
 

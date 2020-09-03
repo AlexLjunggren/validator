@@ -67,6 +67,19 @@ Validates variable consists of only letters and/or numbers
 Data types supported
 - String
 
+## Custom Validation ##
+
+Validates variable against a custom Class
+
+```java
+CustomValidation(className = "com.ljunggren.validator.evaluation.AlphaEvaluation")
+```
+
+Required
+- className - [String] Package and class name of custom validation class
+
+**Note:** Custom validation class must implement the Evaluation interface
+
 ## Email Validation ##
 
 Validates variable is an email address

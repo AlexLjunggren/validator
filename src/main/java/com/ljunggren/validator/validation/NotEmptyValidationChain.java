@@ -6,20 +6,21 @@ import java.util.Map;
 
 import com.ljunggren.validator.Item;
 import com.ljunggren.validator.annotation.NotEmptyValidation;
+import com.ljunggren.validator.evaluation.Evaluation;
+import com.ljunggren.validator.evaluation.NotEmptyEvaluation;
 
 public class NotEmptyValidationChain extends ValidationChain {
 
     private Class<?> annotationClass = NotEmptyValidation.class;
+    private Evaluation<Object> evaluation = new NotEmptyEvaluation();
 
     @Override
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == annotationClass && canHandleType(item)) {
-            Object value = item.getValue();
-            if (value == null || isEmpty(value)) {
-                item.setErrorMessage("Cannot be empty");
+            if (!evaluation.evaluateAgainst(item.getValue())) {
+                item.setErrorMessage(evaluation.getErrorMessage());
                 return;
             }
-            return;
         }
         nextChain.validate(annotation, item);
     }
@@ -28,16 +29,6 @@ public class NotEmptyValidationChain extends ValidationChain {
         Object value = item.getValue();
         return value instanceof String || value instanceof Collection || value instanceof Object[]
                 || value instanceof Map;
-    }
-
-    private boolean isEmpty(Object value) {
-        if (value instanceof Collection)
-            return ((Collection<?>) value).isEmpty();
-        if (value instanceof Object[])
-            return ((Object[]) value).length == 0;
-        if (value instanceof Map)
-            return ((Map<?, ?>) value).isEmpty();
-        return value.toString().isEmpty();
     }
 
 }

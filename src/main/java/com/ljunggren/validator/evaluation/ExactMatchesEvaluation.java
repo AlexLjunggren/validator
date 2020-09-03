@@ -2,7 +2,7 @@ package com.ljunggren.validator.evaluation;
 
 import java.util.Arrays;
 
-public class ExactMatchesEvaluation implements Evaluation {
+public class ExactMatchesEvaluation implements Evaluation<String> {
 
     private String[] matches = {};
     boolean caseSensitive;

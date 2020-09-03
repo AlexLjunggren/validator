@@ -1,6 +1,6 @@
 package com.ljunggren.validator.evaluation;
 
-public class LengthEvaluation implements Evaluation {
+public class LengthEvaluation implements Evaluation<String> {
 
     private int length;
 

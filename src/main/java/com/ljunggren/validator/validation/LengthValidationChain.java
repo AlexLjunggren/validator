@@ -13,7 +13,7 @@ public class LengthValidationChain extends ValidationChain {
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == LengthValidation.class && canHandleType(item)) {
             int length = ((LengthValidation) annotation).length();
-            Evaluation evaluation = new LengthEvaluation(length);
+            Evaluation<String> evaluation = new LengthEvaluation(length);
             if (!evaluation.evaluateAgainst(item.getValue().toString())) {
                 item.setErrorMessage(evaluation.getErrorMessage());
             }

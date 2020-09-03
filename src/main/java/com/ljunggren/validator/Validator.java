@@ -12,6 +12,7 @@ import com.ljunggren.validator.annotation.OptionalValidation;
 import com.ljunggren.validator.validation.AlphaNumericValidationChain;
 import com.ljunggren.validator.validation.AlphaValidationChain;
 import com.ljunggren.validator.validation.CatchAllValidationChain;
+import com.ljunggren.validator.validation.CustomValidationChain;
 import com.ljunggren.validator.validation.EmailValidationChain;
 import com.ljunggren.validator.validation.ExactMatchValidationChain;
 import com.ljunggren.validator.validation.LengthValidationChain;
@@ -83,6 +84,7 @@ public class Validator {
         }
         new AlphaNumericValidationChain()
                 .nextChain(new AlphaValidationChain()
+                .nextChain(new CustomValidationChain()
                 .nextChain(new EmailValidationChain()
                 .nextChain(new ExactMatchValidationChain()
                 .nextChain(new LengthValidationChain()
@@ -90,7 +92,7 @@ public class Validator {
                 .nextChain(new NotNullValidationChain()
                 .nextChain(new RegexValidationChain()
                 .nextChain(new CatchAllValidationChain()
-                        )))))))).validate(annotation, item);
+                        ))))))))).validate(annotation, item);
     }
 
     private boolean containsOptionalValidation(Item item) {
