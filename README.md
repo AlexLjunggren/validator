@@ -69,10 +69,10 @@ Data types supported
 
 ## Custom Validation ##
 
-Validates variable against a custom Class
+Validates variable against a custom class
 
 ```java
-CustomValidation(className = "com.ljunggren.validator.evaluation.AlphaEvaluation")
+@CustomValidation(className = "com.ljunggren.validator.evaluation.AlphaEvaluation")
 ```
 
 Required
