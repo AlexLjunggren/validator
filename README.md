@@ -177,3 +177,19 @@ Required
 
 Data types supported
 - String
+
+## Size Validation ##
+
+Validates variable is of given size
+
+```java
+@SizeValidation(size = 3)
+```
+
+Required
+- Size - [int]
+
+Data types supported
+- Array
+- Collection
+- Map

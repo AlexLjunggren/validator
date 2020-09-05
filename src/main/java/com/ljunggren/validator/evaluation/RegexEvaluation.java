@@ -13,7 +13,7 @@ public class RegexEvaluation implements Evaluation<String> {
     }
 
     public String getErrorMessage() {
-        return "Must match " + regex;
+        return String.format("Must match %s", regex);
     }
 
 }

@@ -19,6 +19,7 @@ import com.ljunggren.validator.validation.LengthValidationChain;
 import com.ljunggren.validator.validation.NotEmptyValidationChain;
 import com.ljunggren.validator.validation.NotNullValidationChain;
 import com.ljunggren.validator.validation.RegexValidationChain;
+import com.ljunggren.validator.validation.SizeValidationChain;
 
 import lombok.Getter;
 
@@ -91,8 +92,9 @@ public class Validator {
                 .nextChain(new NotEmptyValidationChain()
                 .nextChain(new NotNullValidationChain()
                 .nextChain(new RegexValidationChain()
+                .nextChain(new SizeValidationChain()
                 .nextChain(new CatchAllValidationChain()
-                        ))))))))).validate(annotation, item);
+                        )))))))))).validate(annotation, item);
     }
 
     private boolean containsOptionalValidation(Item item) {

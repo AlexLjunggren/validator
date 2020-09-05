@@ -14,30 +14,27 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.ljunggren.validator.Validator;
-import com.ljunggren.validator.annotation.NotEmptyValidation;
+import com.ljunggren.validator.annotation.SizeValidation;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-public class NotEmptyValidationChainTest {
-
+public class SizeValidationChainTest {
+    
     @AllArgsConstructor
     @Data
-    private class NotEmptyPojo {
-        @NotEmptyValidation
+    private class SizePojo {
+        @SizeValidation(size = 3)
         private String[] names;
 
-        @NotEmptyValidation
+        @SizeValidation(size = 3)
         private List<Integer> years;
 
-        @NotEmptyValidation
-        private String document;
-
-        @NotEmptyValidation
+        @SizeValidation(size = 2)
         private Map<Integer, String> catalog;
     }
-
-    private NotEmptyPojo pojo;
+    
+    private SizePojo pojo;
 
     @Before
     public void setup() {
@@ -46,7 +43,7 @@ public class NotEmptyValidationChainTest {
         Map<Integer, String> catalog = new HashMap<Integer, String>();
         catalog.put(1, "A");
         catalog.put(2, "B");
-        pojo = new NotEmptyPojo(names, years, "Document", catalog);
+        pojo = new SizePojo(names, years, catalog);
     }
 
     @Test
@@ -66,7 +63,7 @@ public class NotEmptyValidationChainTest {
 
     @Test
     public void validateInvalidNamesTest() {
-        pojo.setNames(new String[] {});
+        pojo.setNames(new String[] { "Alex", "John" });
         Validator validator = new Validator(pojo).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
@@ -75,16 +72,7 @@ public class NotEmptyValidationChainTest {
 
     @Test
     public void validateInvalidYearsTest() {
-        pojo.setYears(new ArrayList<Integer>());
-        Validator validator = new Validator(pojo).validate();
-        assertFalse(validator.isValid());
-        assertEquals(1, validator.getInvalidItems().size());
-        assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
-    }
-
-    @Test
-    public void validateInvalidDocumentTest() {
-        pojo.setDocument("");
+        pojo.setYears(Arrays.asList(new Integer[] { 2019, 2020, 2021, 2022 }));
         Validator validator = new Validator(pojo).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
