@@ -8,11 +8,11 @@ public class LengthEvaluationTest {
 
     @Test
     public void evaluationTest() {
-        assertTrue(new LengthEvaluation(4).evaluateAgainst("test"));
-        assertTrue(new LengthEvaluation(0).evaluateAgainst(""));
-        assertFalse(new LengthEvaluation(0).evaluateAgainst(" "));
-        assertFalse(new LengthEvaluation(5).evaluateAgainst("test"));
-        assertFalse(new LengthEvaluation(5).evaluateAgainst(null));
+        assertTrue(new LengthEvaluation(4).isValid("test"));
+        assertTrue(new LengthEvaluation(0).isValid(""));
+        assertFalse(new LengthEvaluation(0).isValid(" "));
+        assertFalse(new LengthEvaluation(5).isValid("test"));
+        assertFalse(new LengthEvaluation(5).isValid(null));
     }
 
     @Test

@@ -13,7 +13,7 @@ public class ExactMatchesEvaluation implements Evaluation<String> {
     }
 
     @Override
-    public boolean evaluateAgainst(String value) {
+    public boolean isValid(String value) {
         if (value == null || matches == null) {
             return false;
         }

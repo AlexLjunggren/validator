@@ -12,9 +12,9 @@ public class NotNullEvaluationTest {
 
     @Test
     public void evaluationTest() {
-        assertTrue(evaluation.evaluateAgainst("Alex"));
-        assertTrue(evaluation.evaluateAgainst(new ArrayList<>()));
-        assertFalse(evaluation.evaluateAgainst(null));
+        assertTrue(evaluation.isValid("Alex"));
+        assertTrue(evaluation.isValid(new ArrayList<>()));
+        assertFalse(evaluation.isValid(null));
     }
 
     @Test

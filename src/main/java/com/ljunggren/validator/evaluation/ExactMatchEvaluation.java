@@ -11,7 +11,7 @@ public class ExactMatchEvaluation implements Evaluation<String> {
     }
 
     @Override
-    public boolean evaluateAgainst(String value) {
+    public boolean isValid(String value) {
         if (value == null || match == null) {
             return false;
         }

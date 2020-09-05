@@ -8,22 +8,22 @@ public class ExactMatchEvaluationTest {
 
     @Test
     public void evaluationTest() {
-        assertTrue(new ExactMatchEvaluation("test", true).evaluateAgainst("test"));
-        assertTrue(new ExactMatchEvaluation("1234", true).evaluateAgainst("1234"));
-        assertTrue(new ExactMatchEvaluation("", true).evaluateAgainst(""));
-        assertFalse(new ExactMatchEvaluation("test", true).evaluateAgainst("1234"));
-        assertFalse(new ExactMatchEvaluation("test", true).evaluateAgainst(null));
-        assertFalse(new ExactMatchEvaluation(null, true).evaluateAgainst("test"));
+        assertTrue(new ExactMatchEvaluation("test", true).isValid("test"));
+        assertTrue(new ExactMatchEvaluation("1234", true).isValid("1234"));
+        assertTrue(new ExactMatchEvaluation("", true).isValid(""));
+        assertFalse(new ExactMatchEvaluation("test", true).isValid("1234"));
+        assertFalse(new ExactMatchEvaluation("test", true).isValid(null));
+        assertFalse(new ExactMatchEvaluation(null, true).isValid("test"));
     }
 
     @Test
     public void evaluationInsensitiveTest() {
-        assertTrue(new ExactMatchEvaluation("test", false).evaluateAgainst("TEST"));
-        assertTrue(new ExactMatchEvaluation("1234", false).evaluateAgainst("1234"));
-        assertTrue(new ExactMatchEvaluation("", false).evaluateAgainst(""));
-        assertFalse(new ExactMatchEvaluation("test", false).evaluateAgainst("1234"));
-        assertFalse(new ExactMatchEvaluation("test", false).evaluateAgainst(null));
-        assertFalse(new ExactMatchEvaluation(null, false).evaluateAgainst("test"));
+        assertTrue(new ExactMatchEvaluation("test", false).isValid("TEST"));
+        assertTrue(new ExactMatchEvaluation("1234", false).isValid("1234"));
+        assertTrue(new ExactMatchEvaluation("", false).isValid(""));
+        assertFalse(new ExactMatchEvaluation("test", false).isValid("1234"));
+        assertFalse(new ExactMatchEvaluation("test", false).isValid(null));
+        assertFalse(new ExactMatchEvaluation(null, false).isValid("test"));
     }
 
     @Test

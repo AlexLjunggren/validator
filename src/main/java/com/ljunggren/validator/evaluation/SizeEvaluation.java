@@ -12,7 +12,7 @@ public class SizeEvaluation implements Evaluation<Object> {
     }
 
     @Override
-    public boolean evaluateAgainst(Object value) {
+    public boolean isValid(Object value) {
         if (value == null) {
             return false;
         }

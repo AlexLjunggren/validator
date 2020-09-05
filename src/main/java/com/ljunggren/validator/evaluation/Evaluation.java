@@ -2,7 +2,7 @@ package com.ljunggren.validator.evaluation;
 
 public interface Evaluation<T> {
 
-    boolean evaluateAgainst(T value);
+    boolean isValid(T value);
 
     String getErrorMessage();
 

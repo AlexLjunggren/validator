@@ -10,13 +10,13 @@ public class AlphaEvaluationTest {
 
     @Test
     public void evaluationTest() {
-        assertTrue(evaluation.evaluateAgainst("value"));
-        assertTrue(evaluation.evaluateAgainst("VALUE"));
-        assertFalse(evaluation.evaluateAgainst("1234"));
-        assertFalse(evaluation.evaluateAgainst("value1234"));
-        assertFalse(evaluation.evaluateAgainst("!"));
-        assertFalse(evaluation.evaluateAgainst(""));
-        assertFalse(evaluation.evaluateAgainst(null));
+        assertTrue(evaluation.isValid("value"));
+        assertTrue(evaluation.isValid("VALUE"));
+        assertFalse(evaluation.isValid("1234"));
+        assertFalse(evaluation.isValid("value1234"));
+        assertFalse(evaluation.isValid("!"));
+        assertFalse(evaluation.isValid(""));
+        assertFalse(evaluation.isValid(null));
     }
 
     @Test

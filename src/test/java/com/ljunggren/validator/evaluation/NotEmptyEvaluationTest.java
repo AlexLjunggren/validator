@@ -14,12 +14,12 @@ public class NotEmptyEvaluationTest {
 
     @Test
     public void evaluationTest() {
-        assertTrue(evaluation.evaluateAgainst("Alex"));
-        assertTrue(evaluation.evaluateAgainst(Arrays.asList(new Integer[] {1, 2, 3})));
-        assertFalse(evaluation.evaluateAgainst(new ArrayList<>()));
-        assertFalse(evaluation.evaluateAgainst(new HashMap<>()));
-        assertFalse(evaluation.evaluateAgainst(""));
-        assertFalse(evaluation.evaluateAgainst(null));
+        assertTrue(evaluation.isValid("Alex"));
+        assertTrue(evaluation.isValid(Arrays.asList(new Integer[] {1, 2, 3})));
+        assertFalse(evaluation.isValid(new ArrayList<>()));
+        assertFalse(evaluation.isValid(new HashMap<>()));
+        assertFalse(evaluation.isValid(""));
+        assertFalse(evaluation.isValid(null));
     }
     
     @Test

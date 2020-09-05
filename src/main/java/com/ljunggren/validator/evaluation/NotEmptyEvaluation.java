@@ -6,7 +6,7 @@ import java.util.Map;
 public class NotEmptyEvaluation implements Evaluation<Object> {
 
     @Override
-    public boolean evaluateAgainst(Object value) {
+    public boolean isValid(Object value) {
         if (value == null) {
             return false;
         }

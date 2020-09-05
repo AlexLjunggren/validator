@@ -19,14 +19,14 @@ public class SizeEvaluationTest {
 
     @Test
     public void evaluationTest() {
-        assertTrue(new SizeEvaluation(2).evaluateAgainst(new Integer[] {1, 2}));
-        assertTrue(new SizeEvaluation(2).evaluateAgainst(Arrays.asList(new Integer[] {1, 2})));
-        assertTrue(new SizeEvaluation(2).evaluateAgainst(generateMap()));
-        assertFalse(new SizeEvaluation(1).evaluateAgainst(new Integer[] {1, 2}));
-        assertFalse(new SizeEvaluation(1).evaluateAgainst(Arrays.asList(new Integer[] {1, 2})));
-        assertFalse(new SizeEvaluation(1).evaluateAgainst(generateMap()));
-        assertFalse(new SizeEvaluation(1).evaluateAgainst("Alex"));
-        assertFalse(new SizeEvaluation(1).evaluateAgainst(null));
+        assertTrue(new SizeEvaluation(2).isValid(new Integer[] {1, 2}));
+        assertTrue(new SizeEvaluation(2).isValid(Arrays.asList(new Integer[] {1, 2})));
+        assertTrue(new SizeEvaluation(2).isValid(generateMap()));
+        assertFalse(new SizeEvaluation(1).isValid(new Integer[] {1, 2}));
+        assertFalse(new SizeEvaluation(1).isValid(Arrays.asList(new Integer[] {1, 2})));
+        assertFalse(new SizeEvaluation(1).isValid(generateMap()));
+        assertFalse(new SizeEvaluation(1).isValid("Alex"));
+        assertFalse(new SizeEvaluation(1).isValid(null));
     }
     
     @Test

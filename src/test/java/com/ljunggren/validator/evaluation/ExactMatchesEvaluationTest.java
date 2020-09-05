@@ -12,20 +12,20 @@ public class ExactMatchesEvaluationTest {
 
     @Test
     public void evaluationTest() {
-        assertTrue(new ExactMatchesEvaluation(timeZones, true).evaluateAgainst("MST"));
-        assertFalse(new ExactMatchesEvaluation(timeZones, true).evaluateAgainst("GMT"));
-        assertFalse(new ExactMatchesEvaluation(timeZones, true).evaluateAgainst(""));
-        assertFalse(new ExactMatchesEvaluation(timeZones, true).evaluateAgainst(null));
-        assertFalse(new ExactMatchesEvaluation(null, true).evaluateAgainst("MST"));
+        assertTrue(new ExactMatchesEvaluation(timeZones, true).isValid("MST"));
+        assertFalse(new ExactMatchesEvaluation(timeZones, true).isValid("GMT"));
+        assertFalse(new ExactMatchesEvaluation(timeZones, true).isValid(""));
+        assertFalse(new ExactMatchesEvaluation(timeZones, true).isValid(null));
+        assertFalse(new ExactMatchesEvaluation(null, true).isValid("MST"));
     }
 
     @Test
     public void evaluationInsensitiveTest() {
-        assertTrue(new ExactMatchesEvaluation(timeZones, false).evaluateAgainst("mst"));
-        assertFalse(new ExactMatchesEvaluation(timeZones, false).evaluateAgainst("gmt"));
-        assertFalse(new ExactMatchesEvaluation(timeZones, false).evaluateAgainst(""));
-        assertFalse(new ExactMatchesEvaluation(timeZones, false).evaluateAgainst(null));
-        assertFalse(new ExactMatchesEvaluation(null, false).evaluateAgainst("MST"));
+        assertTrue(new ExactMatchesEvaluation(timeZones, false).isValid("mst"));
+        assertFalse(new ExactMatchesEvaluation(timeZones, false).isValid("gmt"));
+        assertFalse(new ExactMatchesEvaluation(timeZones, false).isValid(""));
+        assertFalse(new ExactMatchesEvaluation(timeZones, false).isValid(null));
+        assertFalse(new ExactMatchesEvaluation(null, false).isValid("MST"));
     }
 
     @Test

@@ -12,12 +12,12 @@ public class AlphaNumericEvaluationTest {
 
     @Test
     public void evaluationTest() {
-        assertTrue(evaluation.evaluateAgainst("value"));
-        assertTrue(evaluation.evaluateAgainst("1234"));
-        assertTrue(evaluation.evaluateAgainst("value1234"));
-        assertFalse(evaluation.evaluateAgainst("!"));
-        assertFalse(evaluation.evaluateAgainst(""));
-        assertFalse(evaluation.evaluateAgainst(null));
+        assertTrue(evaluation.isValid("value"));
+        assertTrue(evaluation.isValid("1234"));
+        assertTrue(evaluation.isValid("value1234"));
+        assertFalse(evaluation.isValid("!"));
+        assertFalse(evaluation.isValid(""));
+        assertFalse(evaluation.isValid(null));
     }
 
     @Test

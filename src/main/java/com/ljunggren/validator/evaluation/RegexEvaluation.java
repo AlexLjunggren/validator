@@ -8,7 +8,7 @@ public class RegexEvaluation implements Evaluation<String> {
         this.regex = regex;
     }
 
-    public boolean evaluateAgainst(String value) {
+    public boolean isValid(String value) {
         return value == null || regex == null ? false : value.matches(regex);
     }
 

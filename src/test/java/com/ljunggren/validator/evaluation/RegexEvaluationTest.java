@@ -10,10 +10,10 @@ public class RegexEvaluationTest {
 
     @Test
     public void evaluationTest() {
-        assertTrue(new RegexEvaluation(ALPHA_REGEX).evaluateAgainst("value"));
-        assertFalse(new RegexEvaluation(ALPHA_REGEX).evaluateAgainst("1234"));
-        assertFalse(new RegexEvaluation(ALPHA_REGEX).evaluateAgainst(null));
-        assertFalse(new RegexEvaluation(null).evaluateAgainst("1234"));
+        assertTrue(new RegexEvaluation(ALPHA_REGEX).isValid("value"));
+        assertFalse(new RegexEvaluation(ALPHA_REGEX).isValid("1234"));
+        assertFalse(new RegexEvaluation(ALPHA_REGEX).isValid(null));
+        assertFalse(new RegexEvaluation(null).isValid("1234"));
     }
     
     @Test

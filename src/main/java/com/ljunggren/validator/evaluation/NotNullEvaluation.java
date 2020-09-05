@@ -3,7 +3,7 @@ package com.ljunggren.validator.evaluation;
 public class NotNullEvaluation implements Evaluation<Object> {
 
     @Override
-    public boolean evaluateAgainst(Object value) {
+    public boolean isValid(Object value) {
         return value != null;
     }
 

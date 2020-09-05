@@ -16,7 +16,7 @@ public class SizeValidationChain extends ValidationChain {
         if (annotation.annotationType() == SizeValidation.class && canHandleType(item)) {
             int size = ((SizeValidation) annotation).size();
             Evaluation<Object> evaluation = new SizeEvaluation(size);
-            if (!evaluation.evaluateAgainst(item.getValue())) {
+            if (!evaluation.isValid(item.getValue())) {
                 item.setErrorMessage(evaluation.getErrorMessage());
             }
             return;

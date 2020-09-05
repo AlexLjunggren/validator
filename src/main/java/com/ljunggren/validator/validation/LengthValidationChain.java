@@ -14,7 +14,7 @@ public class LengthValidationChain extends ValidationChain {
         if (annotation.annotationType() == LengthValidation.class && canHandleType(item)) {
             int length = ((LengthValidation) annotation).length();
             Evaluation<String> evaluation = new LengthEvaluation(length);
-            if (!evaluation.evaluateAgainst(item.getValue().toString())) {
+            if (!evaluation.isValid(item.getValue().toString())) {
                 item.setErrorMessage(evaluation.getErrorMessage());
             }
             return;

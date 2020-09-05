@@ -10,12 +10,12 @@ public class EmailEvaluationTest {
 
     @Test
     public void evaluationTest() {
-        assertTrue(evaluation.evaluateAgainst("user@email.com"));
-        assertTrue(evaluation.evaluateAgainst("USER@EMAIL.COM"));
-        assertTrue(evaluation.evaluateAgainst("user@us.email.com"));
-        assertFalse(evaluation.evaluateAgainst("user@email"));
-        assertFalse(evaluation.evaluateAgainst("user.com"));
-        assertFalse(evaluation.evaluateAgainst(null));
+        assertTrue(evaluation.isValid("user@email.com"));
+        assertTrue(evaluation.isValid("USER@EMAIL.COM"));
+        assertTrue(evaluation.isValid("user@us.email.com"));
+        assertFalse(evaluation.isValid("user@email"));
+        assertFalse(evaluation.isValid("user.com"));
+        assertFalse(evaluation.isValid(null));
     }
 
     @Test

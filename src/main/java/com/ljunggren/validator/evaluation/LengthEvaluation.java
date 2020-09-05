@@ -9,7 +9,7 @@ public class LengthEvaluation implements Evaluation<String> {
     }
 
     @Override
-    public boolean evaluateAgainst(String value) {
+    public boolean isValid(String value) {
         return value == null ? false : value.length() == length;
     }
 

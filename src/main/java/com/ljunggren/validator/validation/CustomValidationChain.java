@@ -16,7 +16,7 @@ public class CustomValidationChain extends ValidationChain {
             String className = ((CustomValidation) annotation).className();
             try {
                 Evaluation<Object> evaluation = instantiateEvaluation(className);
-                if (!evaluation.evaluateAgainst(item.getValue())) {
+                if (!evaluation.isValid(item.getValue())) {
                     item.setErrorMessage(evaluation.getErrorMessage());
                     return;
                 }
