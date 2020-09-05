@@ -57,14 +57,6 @@ public class NotEmptyValidationChainTest {
     }
 
     @Test
-    public void validateNullTest() {
-        pojo.setNames(null);
-        Validator validator = new Validator(pojo).validate();
-        assertTrue(validator.isValid());
-        assertEquals(0, validator.getInvalidItems().size());
-    }
-
-    @Test
     public void validateInvalidNamesTest() {
         pojo.setNames(new String[] {});
         Validator validator = new Validator(pojo).validate();

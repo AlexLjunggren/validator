@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.ljunggren.validator.Validator;
+import com.ljunggren.validator.annotation.NotNullValidation;
 import com.ljunggren.validator.annotation.SizeValidation;
 
 import lombok.AllArgsConstructor;
@@ -24,6 +24,7 @@ public class SizeValidationChainTest {
     @AllArgsConstructor
     @Data
     private class SizePojo {
+//        @NotNullValidation
         @SizeValidation(size = 3)
         private String[] names;
 
@@ -48,14 +49,6 @@ public class SizeValidationChainTest {
 
     @Test
     public void validateTest() {
-        Validator validator = new Validator(pojo).validate();
-        assertTrue(validator.isValid());
-        assertEquals(0, validator.getInvalidItems().size());
-    }
-
-    @Test
-    public void validateNullTest() {
-        pojo.setNames(null);
         Validator validator = new Validator(pojo).validate();
         assertTrue(validator.isValid());
         assertEquals(0, validator.getInvalidItems().size());
