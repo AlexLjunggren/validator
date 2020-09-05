@@ -21,10 +21,7 @@ public class Item {
     }
 
     public String getMemberName() {
-        if (field != null) {
-            return field.getName();
-        }
-        return null;
+        return field == null ? null : field.getName();
     }
 
 }
