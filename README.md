@@ -102,9 +102,9 @@ Validates variable equals given value
 ```
 
 Options
-- match - Match given value
-- matches - Match any of the given values
-- caseSensitive - Default: true
+- match - [String] Match given value
+- matches - [String array] Match any of the given values
+- caseSensitive - [boolean] Default: true
 
 Data types supported
 - String
