@@ -60,7 +60,7 @@ public class SizeValidationChainTest {
         Validator validator = new Validator(pojo).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
-        assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
     }
 
     @Test
@@ -69,7 +69,7 @@ public class SizeValidationChainTest {
         Validator validator = new Validator(pojo).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
-        assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
     }
 
     @Test
@@ -78,7 +78,7 @@ public class SizeValidationChainTest {
         Validator validator = new Validator(pojo).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
-        assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
     }
 
 }

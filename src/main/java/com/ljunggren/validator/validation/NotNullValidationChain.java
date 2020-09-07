@@ -16,7 +16,7 @@ public class NotNullValidationChain extends ValidationChain {
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == annotationClass) {
             if (!evaluation.isValid(item.getValue())) {
-                item.setErrorMessage(evaluation.getErrorMessage());
+                item.addErrorMessage(evaluation.getErrorMessage());
                 return;
             }
             return;

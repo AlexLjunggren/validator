@@ -29,7 +29,7 @@ public class CustomValidationChainTest {
         Validator validator = new Validator(new CustomPojo("1234")).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
-        assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
    }
 
     @AllArgsConstructor
@@ -43,7 +43,7 @@ public class CustomValidationChainTest {
         Validator validator = new Validator(new NonEvaluationPojo("Alex")).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
-        assertEquals("CustomValidator className does not implement Evaluation", validator.getInvalidItems().get(0).getErrorMessage());
+        assertEquals("CustomValidator className does not implement Evaluation", validator.getInvalidItems().get(0).getErrorMessages().get(0));
    }
     
     @AllArgsConstructor
@@ -57,7 +57,7 @@ public class CustomValidationChainTest {
         Validator validator = new Validator(new InvalidClassPojo("Alex")).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
-        assertEquals("CustomValidator class not found com.ljunggren.validator.evaluation.NotRealClass", validator.getInvalidItems().get(0).getErrorMessage());
+        assertEquals("CustomValidator class not found com.ljunggren.validator.evaluation.NotRealClass", validator.getInvalidItems().get(0).getErrorMessages().get(0));
     }
     
 }

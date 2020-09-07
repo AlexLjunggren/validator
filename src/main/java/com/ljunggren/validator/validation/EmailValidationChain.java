@@ -16,7 +16,7 @@ public class EmailValidationChain extends ValidationChain {
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == annotationClass && item.getValue() instanceof String) {
             if (!evaluation.isValid(item.getValue().toString())) {
-                item.setErrorMessage(evaluation.getErrorMessage());
+                item.addErrorMessage(evaluation.getErrorMessage());
                 return;
             }
             return;

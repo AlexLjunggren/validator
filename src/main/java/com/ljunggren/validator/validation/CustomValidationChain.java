@@ -17,11 +17,11 @@ public class CustomValidationChain extends ValidationChain {
             try {
                 Evaluation<Object> evaluation = instantiateEvaluation(className);
                 if (!evaluation.isValid(item.getValue())) {
-                    item.setErrorMessage(evaluation.getErrorMessage());
+                    item.addErrorMessage(evaluation.getErrorMessage());
                     return;
                 }
             } catch (Exception e) {
-                item.setErrorMessage(e.getMessage());
+                item.addErrorMessage(e.getMessage());
                 return;
             }
         }

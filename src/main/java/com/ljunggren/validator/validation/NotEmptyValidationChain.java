@@ -18,7 +18,7 @@ public class NotEmptyValidationChain extends ValidationChain {
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == annotationClass && canHandleType(item)) {
             if (!evaluation.isValid(item.getValue())) {
-                item.setErrorMessage(evaluation.getErrorMessage());
+                item.addErrorMessage(evaluation.getErrorMessage());
                 return;
             }
         }

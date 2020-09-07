@@ -29,7 +29,7 @@ public class RegexValidationChainTest {
         Validator validator = new Validator(new RegexPojo("1234")).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
-        assertFalse(validator.getInvalidItems().get(0).getErrorMessage().isEmpty());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
     }
 
 }
