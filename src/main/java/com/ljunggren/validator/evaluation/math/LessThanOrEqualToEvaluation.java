@@ -2,11 +2,11 @@ package com.ljunggren.validator.evaluation.math;
 
 import com.ljunggren.validator.evaluation.Evaluation;
 
-public class LessThanEvaluation implements Evaluation<Number> {
+public class LessThanOrEqualToEvaluation implements Evaluation<Number> {
 
     private Number maximum;
 
-    public LessThanEvaluation(Number maximum) {
+    public LessThanOrEqualToEvaluation(Number maximum) {
         this.maximum = maximum;
     }
 
@@ -15,12 +15,12 @@ public class LessThanEvaluation implements Evaluation<Number> {
         if (value == null || maximum == null) {
             return false;
         }
-        return value.doubleValue() < maximum.doubleValue();
+        return value.doubleValue() <= maximum.doubleValue();
     }
 
     @Override
     public String getErrorMessage() {
-        return String.format("Must be less than %s", maximum.toString());
+        return String.format("Must be less than or equal to %s", maximum.toString());
     }
     
 }

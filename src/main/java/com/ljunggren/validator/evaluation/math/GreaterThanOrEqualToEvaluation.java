@@ -2,11 +2,11 @@ package com.ljunggren.validator.evaluation.math;
 
 import com.ljunggren.validator.evaluation.Evaluation;
 
-public class GreaterThanEvaluation implements Evaluation<Number> {
+public class GreaterThanOrEqualToEvaluation implements Evaluation<Number> {
 
     private Number minimum;
 
-    public GreaterThanEvaluation(Number minimum) {
+    public GreaterThanOrEqualToEvaluation(Number minimum) {
         this.minimum = minimum;
     }
 
@@ -15,12 +15,12 @@ public class GreaterThanEvaluation implements Evaluation<Number> {
         if (value == null || minimum == null) {
             return false;
         }
-        return value.doubleValue() > minimum.doubleValue();
+        return value.doubleValue() >= minimum.doubleValue();
     }
 
     @Override
     public String getErrorMessage() {
-        return String.format("Must be greater than %s", minimum.toString());
+        return String.format("Must be greater than or equal to %s", minimum.toString());
     }
     
 }

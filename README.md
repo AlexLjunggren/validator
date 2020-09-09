@@ -208,12 +208,40 @@ Required
 Data types supported
 - Number
 
+## Greater Than or Equal to Validation ##
+
+Validates variable is greater than or equal to given number
+
+```java
+@GreaterThanOrEqualToValidation(minimum = 3.2)
+```
+
+Required
+- Minimum - [double]
+
+Data types supported
+- Number
+
 ## Less Than Validation ##
 
 Validates variable is less than given number
 
 ```java
 @LessThanValidation(maximum = 3.2)
+```
+
+Required
+- Maximum - [double]
+
+Data types supported
+- Number
+
+## Less Than or Equal to Validation ##
+
+Validates variable is less than or equal to given number
+
+```java
+@LessThanOrEqualToValidation(maximum = 3.2)
 ```
 
 Required
