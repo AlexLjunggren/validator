@@ -193,3 +193,31 @@ Data types supported
 - Array
 - Collection
 - Map
+
+## Greater Than Validation ##
+
+Validates variable is greater than given number
+
+```java
+@GreaterThanValidation(minimum = 3.2)
+```
+
+Required
+- Minimum - [double]
+
+Data types supported
+- Number
+
+## Less Than Validation ##
+
+Validates variable is less than given number
+
+```java
+@LessThanValidation(maximum = 3.2)
+```
+
+Required
+- Maximum - [double]
+
+Data types supported
+- Number
