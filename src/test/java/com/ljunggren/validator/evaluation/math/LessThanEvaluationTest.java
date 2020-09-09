@@ -7,7 +7,7 @@ import org.junit.Test;
 public class LessThanEvaluationTest {
 
     @Test
-    public void test() {
+    public void evaluateTest() {
         assertTrue(new LessThanEvaluation(5).isValid(4));
         assertTrue(new LessThanEvaluation(4.1).isValid(4.0));
         assertTrue(new LessThanEvaluation(4.1).isValid(4));

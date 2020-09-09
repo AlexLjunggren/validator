@@ -194,6 +194,24 @@ Data types supported
 - Collection
 - Map
 
+## Between Validation ##
+
+Validates variable is between two given numbers
+
+```java
+@BetweenValidation(minimum = 3.2, maximum = 4, inclusive = true)
+```
+
+Optional
+- Inclusive - [boolean] Default: false
+
+Required
+- Minimum - [double]
+- Maximum - [double]
+
+Data types supported
+- Number
+
 ## Greater Than Validation ##
 
 Validates variable is greater than given number

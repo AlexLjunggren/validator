@@ -7,7 +7,7 @@ import org.junit.Test;
 public class GreaterThanOrEqualToEvaluationTest {
 
     @Test
-    public void test() {
+    public void evaluateTest() {
         assertTrue(new GreaterThanOrEqualToEvaluation(4).isValid(5));
         assertTrue(new GreaterThanOrEqualToEvaluation(4.0).isValid(4.1));
         assertTrue(new GreaterThanOrEqualToEvaluation(4).isValid(4.1));
