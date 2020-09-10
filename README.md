@@ -267,3 +267,22 @@ Required
 
 Data types supported
 - Number
+
+## Not Between Validation ##
+
+Validates variable is not between two given numbers
+
+```java
+@NotBetweenValidation(minimum = 3.2, maximum = 4, inclusive = true)
+```
+
+Optional
+- Inclusive - [boolean] Default: false
+
+Required
+- Minimum - [double]
+- Maximum - [double]
+
+Data types supported
+- Number
+
