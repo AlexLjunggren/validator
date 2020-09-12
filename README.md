@@ -286,3 +286,48 @@ Required
 Data types supported
 - Number
 
+## Contains Validation ##
+
+Validates variable contains a given value
+
+```java
+@ContainsValidation(text = "contain")
+@ContainsValidation(startText = "contain", caseSensitive = false)
+```
+
+Options
+- caseSensitive - [boolean] Default: true
+
+Data types supported
+- String
+
+## Starts with Validation ##
+
+Validates variable starts with given value
+
+```java
+@StartsWithValidation(startText = "Begins")
+@StartsWithValidation(startText = "Begins", caseSensitive = false)
+```
+
+Options
+- caseSensitive - [boolean] Default: true
+
+Data types supported
+- String
+
+## Ends with Validation ##
+
+Validates variable begins with given value
+
+```java
+@EndsWithValidation(endText = "Begins")
+@EndsWithValidation(endText = "Begins", caseSensitive = false)
+```
+
+Options
+- caseSensitive - [boolean] Default: true
+
+Data types supported
+- String
+

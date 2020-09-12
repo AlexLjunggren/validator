@@ -27,6 +27,9 @@ import com.ljunggren.validator.validation.math.GreaterThanValidationChain;
 import com.ljunggren.validator.validation.math.LessThanOrEqualToValidationChain;
 import com.ljunggren.validator.validation.math.LessThanValidationChain;
 import com.ljunggren.validator.validation.math.NotBetweenValidationChain;
+import com.ljunggren.validator.validation.string.ContainsValidationChain;
+import com.ljunggren.validator.validation.string.EndsWithValidationChain;
+import com.ljunggren.validator.validation.string.StartsWithValidationChain;
 
 import lombok.Getter;
 
@@ -111,8 +114,16 @@ public class Validator {
                 .nextChain(new LessThanOrEqualToValidationChain()
                 .nextChain(new LessThanValidationChain()
                 .nextChain(new NotBetweenValidationChain()
-                .nextChain(new CatchAllValidationChain()
+                .nextChain(stringChain()
                         ))))));
+    }
+    
+    private ValidationChain stringChain() {
+        return new ContainsValidationChain()
+                .nextChain(new EndsWithValidationChain()
+                .nextChain(new StartsWithValidationChain()
+                .nextChain(new CatchAllValidationChain()
+                        )));
     }
     
     private boolean containsOptionalValidation(Item item) {
