@@ -15,7 +15,7 @@ public class CatchAllValidationChainTest {
     @AllArgsConstructor
     private class Pojo {
         @AlphaNumericValidation
-        private int name;
+        private int number;
     }
 
     @Test
