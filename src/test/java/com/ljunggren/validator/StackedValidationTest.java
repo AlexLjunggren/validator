@@ -5,10 +5,10 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.ljunggren.validator.annotation.AlphaValidation;
-import com.ljunggren.validator.annotation.ExactMatchValidation;
-import com.ljunggren.validator.annotation.LengthValidation;
-import com.ljunggren.validator.annotation.NotNullValidation;
+import com.ljunggren.validator.annotation.Alpha;
+import com.ljunggren.validator.annotation.ExactMatch;
+import com.ljunggren.validator.annotation.Length;
+import com.ljunggren.validator.annotation.NotNull;
 
 import lombok.AllArgsConstructor;
 
@@ -16,10 +16,10 @@ public class StackedValidationTest {
 
     @AllArgsConstructor
     private class StackedPojo {
-        @NotNullValidation
-        @AlphaValidation
-        @LengthValidation(length = 4)
-        @ExactMatchValidation(match = "Alex")
+        @NotNull
+        @Alpha
+        @Length(length = 4)
+        @ExactMatch(match = "Alex")
         private String name;
     }
     

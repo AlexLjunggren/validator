@@ -4,7 +4,7 @@ Annotate member variables for validation
 
 ```java
 public class User {
-	@AlphaValidation
+	@Alpha
 	private String firstName;
 }
 ```
@@ -50,7 +50,7 @@ items.get(0).getErrorMessage();
 Validates variable consists of only letters
 
 ```java
-@AlphaValidation
+@Alpha
 ```
 
 Data types supported
@@ -61,7 +61,7 @@ Data types supported
 Validates variable consists of only letters and/or numbers
 
 ```java
-@AlphaNumericValidation
+@AlphaNumeric
 ```
 
 Data types supported
@@ -72,7 +72,7 @@ Data types supported
 Validates variable against a custom class
 
 ```java
-@CustomValidation(className = "com.ljunggren.validator.evaluation.AlphaEvaluation")
+@Custom(className = "com.ljunggren.validator.evaluation.AlphaEvaluation")
 ```
 
 Required
@@ -85,7 +85,7 @@ Required
 Validates variable is an email address
 
 ```java
-@EmailValidation
+@Email
 ```
 
 Data types supported
@@ -96,9 +96,9 @@ Data types supported
 Validates variable equals given value
 
 ```java
-@ExactMatchValidation(match = "match")
-@ExactMatchValidation(match = "match", caseSensitive = false)
-@ExactMatchValidation(matches = {"PST", "MST", "CST", "EST"})
+@ExactMatch(match = "match")
+@ExactMatch(match = "match", caseSensitive = false)
+@ExactMatch(matches = {"PST", "MST", "CST", "EST"})
 ```
 
 Options
@@ -117,7 +117,7 @@ Data types supported
 Validates variable is of given length
 
 ```java
-@LengthValidation(length = 4)
+@Length(length = 4)
 ```
 
 Required
@@ -133,7 +133,7 @@ Data types supported
 Validates variable is not empty
 
 ```java
-@NotEmptyValidation
+@NotEmpty
 ```
 
 Data types supported
@@ -147,7 +147,7 @@ Data types supported
 Validates variable is not null
 
 ```java
-@NotNullValidation
+@NotNull
 ```
 
 Data types supported
@@ -158,7 +158,7 @@ Data types supported
 Will override all other validations if variable is null
 
 ```java
-@OptionalValidation
+@Optional
 ```
 
 Data types supported
@@ -169,7 +169,7 @@ Data types supported
 Validates variable matches given regex
 
 ```java
-@RegexValidation(regex = "^[a-zA-Z]+$")
+@Regex(regex = "^[a-zA-Z]+$")
 ```
 
 Required
@@ -183,7 +183,7 @@ Data types supported
 Validates variable is of given size
 
 ```java
-@SizeValidation(size = 3)
+@Size(size = 3)
 ```
 
 Required
@@ -199,7 +199,7 @@ Data types supported
 Validates variable is between two given numbers
 
 ```java
-@BetweenValidation(minimum = 3.2, maximum = 4, inclusive = true)
+@Between(minimum = 3.2, maximum = 4, inclusive = true)
 ```
 
 Optional
@@ -217,7 +217,7 @@ Data types supported
 Validates variable is greater than given number
 
 ```java
-@GreaterThanValidation(minimum = 3.2)
+@GreaterThan(minimum = 3.2)
 ```
 
 Required
@@ -231,7 +231,7 @@ Data types supported
 Validates variable is greater than or equal to given number
 
 ```java
-@GreaterThanOrEqualToValidation(minimum = 3.2)
+@GreaterThanOrEqualTo(minimum = 3.2)
 ```
 
 Required
@@ -245,7 +245,7 @@ Data types supported
 Validates variable is less than given number
 
 ```java
-@LessThanValidation(maximum = 3.2)
+@LessThan(maximum = 3.2)
 ```
 
 Required
@@ -259,7 +259,7 @@ Data types supported
 Validates variable is less than or equal to given number
 
 ```java
-@LessThanOrEqualToValidation(maximum = 3.2)
+@LessThanOrEqualTo(maximum = 3.2)
 ```
 
 Required
@@ -273,7 +273,7 @@ Data types supported
 Validates variable is not between two given numbers
 
 ```java
-@NotBetweenValidation(minimum = 3.2, maximum = 4, inclusive = true)
+@NotBetween(minimum = 3.2, maximum = 4, inclusive = true)
 ```
 
 Optional
@@ -291,8 +291,8 @@ Data types supported
 Validates variable contains a given value
 
 ```java
-@ContainsValidation(text = "contain")
-@ContainsValidation(startText = "contain", caseSensitive = false)
+@Contains(text = "contain")
+@Contains(startText = "contain", caseSensitive = false)
 ```
 
 Options
@@ -306,8 +306,8 @@ Data types supported
 Validates variable starts with given value
 
 ```java
-@StartsWithValidation(startText = "Begins")
-@StartsWithValidation(startText = "Begins", caseSensitive = false)
+@StartsWith(startText = "Begins")
+@StartsWith(startText = "Begins", caseSensitive = false)
 ```
 
 Options
@@ -321,8 +321,8 @@ Data types supported
 Validates variable begins with given value
 
 ```java
-@EndsWithValidation(endText = "Begins")
-@EndsWithValidation(endText = "Begins", caseSensitive = false)
+@EndsWith(endText = "Begins")
+@EndsWith(endText = "Begins", caseSensitive = false)
 ```
 
 Options

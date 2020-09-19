@@ -8,28 +8,28 @@ import java.util.List;
 
 import org.apache.commons.lang3.reflect.FieldUtils;
 
-import com.ljunggren.validator.annotation.OptionalValidation;
-import com.ljunggren.validator.validation.AlphaNumericValidationChain;
-import com.ljunggren.validator.validation.AlphaValidationChain;
-import com.ljunggren.validator.validation.CatchAllValidationChain;
-import com.ljunggren.validator.validation.CustomValidationChain;
-import com.ljunggren.validator.validation.EmailValidationChain;
-import com.ljunggren.validator.validation.ExactMatchValidationChain;
-import com.ljunggren.validator.validation.LengthValidationChain;
-import com.ljunggren.validator.validation.NotEmptyValidationChain;
-import com.ljunggren.validator.validation.NotNullValidationChain;
-import com.ljunggren.validator.validation.RegexValidationChain;
-import com.ljunggren.validator.validation.SizeValidationChain;
+import com.ljunggren.validator.annotation.Optional;
+import com.ljunggren.validator.validation.AlphaNumericValidation;
+import com.ljunggren.validator.validation.AlphaValidation;
+import com.ljunggren.validator.validation.CatchAllValidation;
+import com.ljunggren.validator.validation.CustomValidation;
+import com.ljunggren.validator.validation.EmailValidation;
+import com.ljunggren.validator.validation.ExactMatchValidation;
+import com.ljunggren.validator.validation.LengthValidation;
+import com.ljunggren.validator.validation.NotEmptyValidation;
+import com.ljunggren.validator.validation.NotNullValidation;
+import com.ljunggren.validator.validation.RegexValidation;
+import com.ljunggren.validator.validation.SizeValidation;
 import com.ljunggren.validator.validation.ValidationChain;
-import com.ljunggren.validator.validation.math.BetweenValidationChain;
-import com.ljunggren.validator.validation.math.GreaterThanOrEqualToValidationChain;
-import com.ljunggren.validator.validation.math.GreaterThanValidationChain;
-import com.ljunggren.validator.validation.math.LessThanOrEqualToValidationChain;
-import com.ljunggren.validator.validation.math.LessThanValidationChain;
-import com.ljunggren.validator.validation.math.NotBetweenValidationChain;
-import com.ljunggren.validator.validation.string.ContainsValidationChain;
-import com.ljunggren.validator.validation.string.EndsWithValidationChain;
-import com.ljunggren.validator.validation.string.StartsWithValidationChain;
+import com.ljunggren.validator.validation.math.BetweenValidation;
+import com.ljunggren.validator.validation.math.GreaterThanOrEqualToValidation;
+import com.ljunggren.validator.validation.math.GreaterThanValidation;
+import com.ljunggren.validator.validation.math.LessThanOrEqualToValidation;
+import com.ljunggren.validator.validation.math.LessThanValidation;
+import com.ljunggren.validator.validation.math.NotBetweenValidation;
+import com.ljunggren.validator.validation.string.ContainsValidation;
+import com.ljunggren.validator.validation.string.EndsWithValidation;
+import com.ljunggren.validator.validation.string.StartsWithValidation;
 
 import lombok.Getter;
 
@@ -90,44 +90,44 @@ public class Validator {
 
     private void validationChain(Annotation annotation, Item item) {
         if (containsOptionalValidation(item) && item.getValue() == null) {
-            new CatchAllValidationChain().validate(annotation, item);
+            new CatchAllValidation().validate(annotation, item);
             return;
         }
-        new AlphaNumericValidationChain()
-                .nextChain(new AlphaValidationChain()
-                .nextChain(new CustomValidationChain()
-                .nextChain(new EmailValidationChain()
-                .nextChain(new ExactMatchValidationChain()
-                .nextChain(new LengthValidationChain()
-                .nextChain(new NotEmptyValidationChain()
-                .nextChain(new NotNullValidationChain()
-                .nextChain(new RegexValidationChain()
-                .nextChain(new SizeValidationChain()
+        new AlphaNumericValidation()
+                .nextChain(new AlphaValidation()
+                .nextChain(new CustomValidation()
+                .nextChain(new EmailValidation()
+                .nextChain(new ExactMatchValidation()
+                .nextChain(new LengthValidation()
+                .nextChain(new NotEmptyValidation()
+                .nextChain(new NotNullValidation()
+                .nextChain(new RegexValidation()
+                .nextChain(new SizeValidation()
                 .nextChain(mathChain()
                         )))))))))).validate(annotation, item);
     }
     
     private ValidationChain mathChain() {
-        return new BetweenValidationChain()
-                .nextChain(new GreaterThanOrEqualToValidationChain()
-                .nextChain(new GreaterThanValidationChain()
-                .nextChain(new LessThanOrEqualToValidationChain()
-                .nextChain(new LessThanValidationChain()
-                .nextChain(new NotBetweenValidationChain()
+        return new BetweenValidation()
+                .nextChain(new GreaterThanOrEqualToValidation()
+                .nextChain(new GreaterThanValidation()
+                .nextChain(new LessThanOrEqualToValidation()
+                .nextChain(new LessThanValidation()
+                .nextChain(new NotBetweenValidation()
                 .nextChain(stringChain()
                         ))))));
     }
     
     private ValidationChain stringChain() {
-        return new ContainsValidationChain()
-                .nextChain(new EndsWithValidationChain()
-                .nextChain(new StartsWithValidationChain()
-                .nextChain(new CatchAllValidationChain()
+        return new ContainsValidation()
+                .nextChain(new EndsWithValidation()
+                .nextChain(new StartsWithValidation()
+                .nextChain(new CatchAllValidation()
                         )));
     }
     
     private boolean containsOptionalValidation(Item item) {
-        return item.getField().getAnnotation(OptionalValidation.class) != null;
+        return item.getField().getAnnotation(Optional.class) != null;
     }
 
 }
