@@ -45,7 +45,7 @@ Get error message for invalid Item
 items.get(0).getErrorMessage();
 ```
 
-## Alpha Validation ##
+## Alpha ##
 
 Validates variable consists of only letters
 
@@ -56,7 +56,7 @@ Validates variable consists of only letters
 Data types supported
 - String
 
-## AlphaNumeric Validation ##
+## AlphaNumeric ##
 
 Validates variable consists of only letters and/or numbers
 
@@ -67,7 +67,7 @@ Validates variable consists of only letters and/or numbers
 Data types supported
 - String
 
-## Custom Validation ##
+## Custom ##
 
 Validates variable against a custom class
 
@@ -80,7 +80,7 @@ Required
 
 **Note:** Custom validation class must implement the Evaluation interface
 
-## Email Validation ##
+## Email ##
 
 Validates variable is an email address
 
@@ -91,7 +91,7 @@ Validates variable is an email address
 Data types supported
 - String
 
-## Exact Match Validation ##
+## Exact Match ##
 
 Validates variable equals given value
 
@@ -112,7 +112,7 @@ Data types supported
 
 **Note:** matches array will override match string
 
-## Length Validation ##
+## Length ##
 
 Validates variable is of given length
 
@@ -128,7 +128,7 @@ Data types supported
 - Integer
 - Long
 
-## Not Empty Validation ##
+## Not Empty ##
 
 Validates variable is not empty
 
@@ -142,7 +142,7 @@ Data types supported
 - Collection
 - Map
 
-## Not Null Validation ##
+## Not Null ##
 
 Validates variable is not null
 
@@ -153,7 +153,7 @@ Validates variable is not null
 Data types supported
 - Any Object
 
-## Optional Validation ##
+## Optional ##
 
 Will override all other validations if variable is null
 
@@ -164,7 +164,7 @@ Will override all other validations if variable is null
 Data types supported
 - Any Object
 
-## Regex Validation ##
+## Regex ##
 
 Validates variable matches given regex
 
@@ -178,7 +178,7 @@ Required
 Data types supported
 - String
 
-## Size Validation ##
+## Size ##
 
 Validates variable is of given size
 
@@ -194,7 +194,7 @@ Data types supported
 - Collection
 - Map
 
-## Between Validation ##
+## Between ##
 
 Validates variable is between two given numbers
 
@@ -212,7 +212,7 @@ Required
 Data types supported
 - Number
 
-## Greater Than Validation ##
+## Greater Than ##
 
 Validates variable is greater than given number
 
@@ -226,7 +226,7 @@ Required
 Data types supported
 - Number
 
-## Greater Than or Equal to Validation ##
+## Greater Than or Equal to ##
 
 Validates variable is greater than or equal to given number
 
@@ -240,7 +240,7 @@ Required
 Data types supported
 - Number
 
-## Less Than Validation ##
+## Less Than ##
 
 Validates variable is less than given number
 
@@ -254,7 +254,7 @@ Required
 Data types supported
 - Number
 
-## Less Than or Equal to Validation ##
+## Less Than or Equal to ##
 
 Validates variable is less than or equal to given number
 
@@ -268,7 +268,7 @@ Required
 Data types supported
 - Number
 
-## Not Between Validation ##
+## Not Between ##
 
 Validates variable is not between two given numbers
 
@@ -286,7 +286,7 @@ Required
 Data types supported
 - Number
 
-## Contains Validation ##
+## Contains ##
 
 Validates variable contains a given value
 
@@ -301,7 +301,7 @@ Options
 Data types supported
 - String
 
-## Starts with Validation ##
+## Starts with ##
 
 Validates variable starts with given value
 
@@ -316,7 +316,7 @@ Options
 Data types supported
 - String
 
-## Ends with Validation ##
+## Ends with ##
 
 Validates variable begins with given value
 
