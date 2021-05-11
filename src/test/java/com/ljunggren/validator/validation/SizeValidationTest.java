@@ -13,7 +13,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.ljunggren.validator.Validator;
-import com.ljunggren.validator.annotation.NotNull;
 import com.ljunggren.validator.annotation.Size;
 
 import lombok.AllArgsConstructor;
