@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.ljunggren.validator.Validator;
-import com.ljunggren.validator.annotation.Custom;
+import com.ljunggren.validator.annotation.CustomValidator;
 
 import lombok.AllArgsConstructor;
 
@@ -13,7 +13,7 @@ public class CustomValidationTest {
     
     @AllArgsConstructor
     private class CustomPojo {
-        @Custom(className = "com.ljunggren.validator.evaluation.AlphaEvaluation")
+        @CustomValidator(className = "com.ljunggren.validator.evaluation.AlphaEvaluation")
         private String name;
     }
     
@@ -34,7 +34,7 @@ public class CustomValidationTest {
 
     @AllArgsConstructor
     private class NonEvaluationPojo {
-        @Custom(className = "com.ljunggren.validator.validation.AlphaValidation")
+        @CustomValidator(className = "com.ljunggren.validator.validation.AlphaValidation")
         private String name;
     }
     
@@ -48,7 +48,7 @@ public class CustomValidationTest {
     
     @AllArgsConstructor
     private class InvalidClassPojo {
-        @Custom(className = "com.ljunggren.validator.evaluation.NotRealClass")
+        @CustomValidator(className = "com.ljunggren.validator.evaluation.NotRealClass")
         private String name;
     }
     

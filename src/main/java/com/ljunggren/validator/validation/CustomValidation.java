@@ -3,17 +3,17 @@ package com.ljunggren.validator.validation;
 import java.lang.annotation.Annotation;
 
 import com.ljunggren.validator.Item;
-import com.ljunggren.validator.annotation.Custom;
+import com.ljunggren.validator.annotation.CustomValidator;
 import com.ljunggren.validator.evaluation.Evaluation;
 
 public class CustomValidation extends ValidationChain {
     
-    private Class<?> annotationClass = Custom.class;
+    private Class<?> annotationClass = CustomValidator.class;
 
     @Override
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == annotationClass) {
-            String className = ((Custom) annotation).className();
+            String className = ((CustomValidator) annotation).className();
             try {
                 Evaluation<Object> evaluation = instantiateEvaluation(className);
                 if (!evaluation.isValid(item.getValue())) {
