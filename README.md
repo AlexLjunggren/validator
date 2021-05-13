@@ -82,10 +82,10 @@ Format used by java.text.SimpleDateFormat
 
 ## Custom ##
 
-Validates variable against a custom class
+Validates against a custom class
 
 ```java
-@Custom(className = "com.ljunggren.validator.evaluation.AlphaEvaluation")
+@CustomValidator(className = "MyEvaluation")
 ```
 
 Required
