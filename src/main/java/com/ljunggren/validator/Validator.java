@@ -15,7 +15,7 @@ import com.ljunggren.validator.validation.CatchAllValidation;
 import com.ljunggren.validator.validation.CustomValidation;
 import com.ljunggren.validator.validation.EmailValidation;
 import com.ljunggren.validator.validation.ExactMatchValidation;
-import com.ljunggren.validator.validation.FormattedDateValidation;
+import com.ljunggren.validator.validation.DateFormatValidation;
 import com.ljunggren.validator.validation.LengthValidation;
 import com.ljunggren.validator.validation.NotEmptyValidation;
 import com.ljunggren.validator.validation.NotNullValidation;
@@ -104,7 +104,7 @@ public class Validator {
                 .nextChain(new NotNullValidation()
                 .nextChain(new RegexValidation()
                 .nextChain(new SizeValidation()
-                .nextChain(new FormattedDateValidation()
+                .nextChain(new DateFormatValidation()
                 .nextChain(mathChain()
                         ))))))))))).validate(annotation, item);
     }

@@ -8,17 +8,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.ljunggren.validator.Validator;
-import com.ljunggren.validator.annotation.FormattedDate;
+import com.ljunggren.validator.annotation.DateFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-public class FormattedDateValidationTest {
+public class DateFormatValidationTest {
 
     @AllArgsConstructor
     @Data
     private class DatePojo {
-        @FormattedDate(format = "yyyy-MM-dd")
+        @DateFormat(pattern = "yyyy-MM-dd")
         private String submittedDate;
     }
     

@@ -3,11 +3,11 @@ package com.ljunggren.validator.evaluation;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class FormattedDateEvaluation implements Evaluation<String> {
+public class DateFormatEvaluation implements Evaluation<String> {
     
     private String format;
     
-    public FormattedDateEvaluation(String format) {
+    public DateFormatEvaluation(String format) {
         this.format = format;
     }
 

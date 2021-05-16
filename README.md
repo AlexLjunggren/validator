@@ -67,19 +67,6 @@ Validates variable consists of only letters and/or numbers
 Data types supported
 - String
 
-## FormattedDate ##
-
-Validates a string is in a given date format
-
-```java
-@FormattedDate(format = "yyyy-MM-dd")
-```
-
-Data types supported
-- String
-
-Format used by java.text.SimpleDateFormat
-
 ## Custom ##
 
 Validates against a custom class
@@ -92,6 +79,19 @@ Required
 - className - [String] Package and class name of custom validation class
 
 **Note:** Custom validation class must implement the Evaluation interface
+
+## DateFormat ##
+
+Validates a string is in a given date format
+
+```java
+@DateFormat(pattern = "yyyy-MM-dd")
+```
+
+Data types supported
+- String
+
+Format used by java.text.SimpleDateFormat
 
 ## Email ##
 
