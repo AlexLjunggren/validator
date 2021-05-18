@@ -19,6 +19,8 @@ import com.ljunggren.validator.validation.DateFormatValidation;
 import com.ljunggren.validator.validation.LengthValidation;
 import com.ljunggren.validator.validation.NotEmptyValidation;
 import com.ljunggren.validator.validation.NotNullValidation;
+import com.ljunggren.validator.validation.NumberValidation;
+import com.ljunggren.validator.validation.OptionalValidation;
 import com.ljunggren.validator.validation.RegexValidation;
 import com.ljunggren.validator.validation.SizeValidation;
 import com.ljunggren.validator.validation.ValidationChain;
@@ -39,7 +41,6 @@ public class Validator {
 
     private Object object;
     private List<Item> invalidItems = new ArrayList<>();
-    private boolean valid = false;
 
     public Validator(Object object) {
         this.object = object;
@@ -48,13 +49,27 @@ public class Validator {
     public Validator validate() {
         List<Item> items = findItems(object);
         validateItems(items);
+        extractInvalidItems(items);
+        return this;
+    }
+    
+    public Validator template() {
+        List<Item> items = findItems(object);
+        templateItems(items);
+        extractInvalidItems(items);
+        return this;
+    }
+    
+    public boolean isValid() {
+        return invalidItems.isEmpty();
+    }
+    
+    private void extractInvalidItems(List<Item> items) {
         items.stream().forEach(item -> {
             if (!item.isValid()) {
                 invalidItems.add(item);
             }
         });
-        valid = invalidItems.isEmpty();
-        return this;
     }
 
     private List<Item> findItems(Object object) {
@@ -80,21 +95,39 @@ public class Validator {
         return new ArrayList<Field>();
     }
 
-    public void validateItems(List<Item> items) {
+    private void validateItems(List<Item> items) {
         items.forEach(item -> validateItem(item));
     }
 
     private void validateItem(Item item) {
         Annotation[] annotations = item.getField().getAnnotations();
-        Arrays.asList(annotations).forEach(annotation -> validationChain(annotation, item));
+        Arrays.asList(annotations).forEach(annotation -> {
+            if (containsOptionalValidation(item) && item.getValue() == null) {
+                new CatchAllValidation().validate(annotation, item);
+                return;
+            }
+            getValidationChain(annotation, item).validate(annotation, item);
+        });
+    }
+    
+    private void templateItems(List<Item> items) {
+        items.forEach(item -> {
+            item.setValue(null);
+            templateItem(item);
+        });
     }
 
-    private void validationChain(Annotation annotation, Item item) {
-        if (containsOptionalValidation(item) && item.getValue() == null) {
-            new CatchAllValidation().validate(annotation, item);
-            return;
-        }
-        new AlphaNumericValidation()
+    private void templateItem(Item item) {
+        Annotation[] annotations = item.getField().getAnnotations();
+        Arrays.asList(annotations).forEach(annotation -> {
+            new OptionalValidation()
+                    .nextChain(getValidationChain(annotation, item))
+                    .validate(annotation, item);
+        });
+    }
+
+    private ValidationChain getValidationChain(Annotation annotation, Item item) {
+        return new AlphaNumericValidation()
                 .nextChain(new AlphaValidation()
                 .nextChain(new CustomValidation()
                 .nextChain(new EmailValidation()
@@ -102,11 +135,12 @@ public class Validator {
                 .nextChain(new LengthValidation()
                 .nextChain(new NotEmptyValidation()
                 .nextChain(new NotNullValidation()
+                .nextChain(new NumberValidation()
                 .nextChain(new RegexValidation()
                 .nextChain(new SizeValidation()
                 .nextChain(new DateFormatValidation()
                 .nextChain(mathChain()
-                        ))))))))))).validate(annotation, item);
+                        ))))))))))));
     }
     
     private ValidationChain mathChain() {
