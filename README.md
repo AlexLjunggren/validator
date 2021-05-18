@@ -183,6 +183,17 @@ Validates if variable is a number
 Data types supported
 - String
 
+## Numeric ##
+
+Validates variable consists of only numbers
+
+```java
+@Numeric
+```
+
+Data types supported
+- String
+
 ## Optional ##
 
 Will override all other validations if variable is null

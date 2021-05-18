@@ -20,6 +20,7 @@ import com.ljunggren.validator.validation.LengthValidation;
 import com.ljunggren.validator.validation.NotEmptyValidation;
 import com.ljunggren.validator.validation.NotNullValidation;
 import com.ljunggren.validator.validation.NumberValidation;
+import com.ljunggren.validator.validation.NumericValidation;
 import com.ljunggren.validator.validation.OptionalValidation;
 import com.ljunggren.validator.validation.RegexValidation;
 import com.ljunggren.validator.validation.SizeValidation;
@@ -135,12 +136,13 @@ public class Validator {
                 .nextChain(new LengthValidation()
                 .nextChain(new NotEmptyValidation()
                 .nextChain(new NotNullValidation()
+                .nextChain(new NumericValidation()
                 .nextChain(new NumberValidation()
                 .nextChain(new RegexValidation()
                 .nextChain(new SizeValidation()
                 .nextChain(new DateFormatValidation()
                 .nextChain(mathChain()
-                        ))))))))))));
+                        )))))))))))));
     }
     
     private ValidationChain mathChain() {
