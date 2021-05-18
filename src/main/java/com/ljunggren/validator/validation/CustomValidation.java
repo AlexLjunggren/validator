@@ -20,7 +20,6 @@ public class CustomValidation extends ValidationChain {
             } catch (Exception e) {
                 item.addErrorMessage(e.getMessage());
             }
-            return;
         }
         nextChain.validate(annotation, item);
     }

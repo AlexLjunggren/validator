@@ -18,12 +18,12 @@ public class NotBetweenValidationTest {
     @Data
     private class NotBetweenPojo {
         @NotBetween(minimum = 3, maximum = 4)
-        private double gpa;
+        private Double gpa;
     }
 
     @Test
     public void valiateTest() {
-        Validator validator = new Validator(new NotBetweenPojo(2)).validate();
+        Validator validator = new Validator(new NotBetweenPojo(2.0)).validate();
         assertTrue(validator.isValid());
         assertEquals(0, validator.getInvalidItems().size());
     }
@@ -31,6 +31,14 @@ public class NotBetweenValidationTest {
     @Test
     public void validateInvalidTest() {
         Validator validator = new Validator(new NotBetweenPojo(3.5)).validate();
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getInvalidItems().size());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
+    }
+
+    @Test
+    public void validateNullTest() {
+        Validator validator = new Validator(new NotBetweenPojo(null)).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
         assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());

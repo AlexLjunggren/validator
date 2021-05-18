@@ -1,8 +1,7 @@
 package com.ljunggren.validator.validation;
 
 import java.lang.annotation.Annotation;
-import java.util.Collection;
-import java.util.Map;
+import java.lang.reflect.Field;
 
 import com.ljunggren.validator.Item;
 import com.ljunggren.validator.annotation.Size;
@@ -19,13 +18,12 @@ public class SizeValidation extends ValidationChain {
             if (!evaluation.isValid(item.getValue())) {
                 item.addErrorMessage(evaluation.getErrorMessage());
             }
-            return;
         }
         nextChain.validate(annotation, item);
     }
 
     private boolean canHandleType(Item item) {
-        Object value = item.getValue();
-        return value instanceof Collection || value instanceof Object[] || value instanceof Map;
+        Field field = item.getField();
+        return isCollection(field) || isArray(field) || isMap(field);
     }
 }

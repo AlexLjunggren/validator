@@ -18,12 +18,12 @@ public class LessThanValidationTest {
     @Data
     private class LessThanPojo {
         @LessThan(maximum = 3.2)
-        private double gpa;
+        private Double gpa;
     }
 
     @Test
     public void valiateTest() {
-        Validator validator = new Validator(new LessThanPojo(3)).validate();
+        Validator validator = new Validator(new LessThanPojo(3.0)).validate();
         assertTrue(validator.isValid());
         assertEquals(0, validator.getInvalidItems().size());
     }
@@ -31,6 +31,14 @@ public class LessThanValidationTest {
     @Test
     public void validateInvalidTest() {
         Validator validator = new Validator(new LessThanPojo(3.2)).validate();
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getInvalidItems().size());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
+    }
+
+    @Test
+    public void validateNullTest() {
+        Validator validator = new Validator(new LessThanPojo(null)).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
         assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());

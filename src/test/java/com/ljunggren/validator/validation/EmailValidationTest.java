@@ -34,4 +34,12 @@ public class EmailValidationTest {
         assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
     }
 
+    @Test
+    public void validateNullTest() {
+        Validator validator = new Validator(new EmailPojo(null)).validate();
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getInvalidItems().size());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
+    }
+
 }

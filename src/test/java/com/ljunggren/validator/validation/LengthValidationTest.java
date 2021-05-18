@@ -22,7 +22,7 @@ public class LengthValidationTest {
         private String name;
 
         @Length(length = 5)
-        private int zipCode;
+        private Integer zipCode;
 
         @Length(length = 6)
         private long salary;
@@ -63,6 +63,15 @@ public class LengthValidationTest {
     @Test
     public void validateInvalidSalaryTest() {
         pojo.setSalary(40000);
+        Validator validator = new Validator(pojo).validate();
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getInvalidItems().size());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
+    }
+
+    @Test
+    public void validateNullSalaryTest() {
+        pojo.setZipCode(null);
         Validator validator = new Validator(pojo).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());

@@ -18,7 +18,7 @@ public class BetweenValidationTest {
     @Data
     private class BetweenPojo {
         @Between(minimum = 3, maximum = 4)
-        private double gpa;
+        private Double gpa;
     }
 
     @Test
@@ -30,7 +30,15 @@ public class BetweenValidationTest {
     
     @Test
     public void validateInvalidTest() {
-        Validator validator = new Validator(new BetweenPojo(4)).validate();
+        Validator validator = new Validator(new BetweenPojo(4.0)).validate();
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getInvalidItems().size());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
+    }
+
+    @Test
+    public void validateNullTest() {
+        Validator validator = new Validator(new BetweenPojo(null)).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
         assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());

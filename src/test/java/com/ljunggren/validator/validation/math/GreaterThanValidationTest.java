@@ -16,7 +16,7 @@ public class GreaterThanValidationTest {
     @Data
     private class GreaterThanPojo {
         @GreaterThan(minimum = 3.2)
-        private double gpa;
+        private Double gpa;
     }
 
     @Test
@@ -29,6 +29,14 @@ public class GreaterThanValidationTest {
     @Test
     public void validateInvalidTest() {
         Validator validator = new Validator(new GreaterThanPojo(3.2)).validate();
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getInvalidItems().size());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
+    }
+
+    @Test
+    public void validateNullTest() {
+        Validator validator = new Validator(new GreaterThanPojo(null)).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
         assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());

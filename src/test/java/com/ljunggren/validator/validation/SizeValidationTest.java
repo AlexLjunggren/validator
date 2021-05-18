@@ -80,4 +80,13 @@ public class SizeValidationTest {
         assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
     }
 
+    @Test
+    public void validateNullMapTest() {
+        pojo.setCatalog(null);
+        Validator validator = new Validator(pojo).validate();
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getInvalidItems().size());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
+    }
+
 }

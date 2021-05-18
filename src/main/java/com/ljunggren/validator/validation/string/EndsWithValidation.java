@@ -12,14 +12,13 @@ public class EndsWithValidation extends ValidationChain {
 
     @Override
     public void validate(Annotation annotation, Item item) {
-        if (annotation.annotationType() == EndsWith.class && item.getValue() instanceof String) {
+        if (annotation.annotationType() == EndsWith.class && isString(item.getField())) {
             String endText = ((EndsWith) annotation).endText();
             boolean caseSensitive = ((EndsWith) annotation).caseSensitive();
             Evaluation<String> evaluation = new EndsWithEvaluation(endText, caseSensitive);
-            if (!evaluation.isValid(item.getValue().toString())) {
+            if (!evaluation.isValid(toString(item.getValue()))) {
                 item.addErrorMessage(evaluation.getErrorMessage());
             }
-            return;
         }
         nextChain.validate(annotation, item);
     }

@@ -14,12 +14,10 @@ public class EmailValidation extends ValidationChain {
 
     @Override
     public void validate(Annotation annotation, Item item) {
-        if (annotation.annotationType() == annotationClass && item.getValue() instanceof String) {
-            if (!evaluation.isValid(item.getValue().toString())) {
+        if (annotation.annotationType() == annotationClass && isString(item.getField())) {
+            if (!evaluation.isValid(toString(item.getValue()))) {
                 item.addErrorMessage(evaluation.getErrorMessage());
-                return;
             }
-            return;
         }
         nextChain.validate(annotation, item);
     }

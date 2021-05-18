@@ -28,7 +28,7 @@ public class ExactMatchValidationTest {
         private int zipCode;
 
         @ExactMatch(match = "100000")
-        private long salary;
+        private Long salary;
 
         @ExactMatch(matches = { "PST", "MST", "CST", "EST" })
         private String timeZone;
@@ -41,7 +41,7 @@ public class ExactMatchValidationTest {
 
     @Before
     public void setup() {
-        pojo = new ExactMatchPojo("Alex", "Ljunggren", 46123, 100000, "EST", 2020);
+        pojo = new ExactMatchPojo("Alex", "Ljunggren", 46123, 100000L, "EST", 2020);
     }
 
     @Test
@@ -88,7 +88,7 @@ public class ExactMatchValidationTest {
 
     @Test
     public void validateInvalidSalaryTest() {
-        pojo.setSalary(40000);
+        pojo.setSalary(40000L);
         Validator validator = new Validator(pojo).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
@@ -107,6 +107,24 @@ public class ExactMatchValidationTest {
     @Test
     public void validateInvalidYearTest() {
         pojo.setYear(1998);
+        Validator validator = new Validator(pojo).validate();
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getInvalidItems().size());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
+    }
+
+    @Test
+    public void validateNullStringTest() {
+        pojo.setFirstName(null);
+        Validator validator = new Validator(pojo).validate();
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getInvalidItems().size());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
+    }
+
+    @Test
+    public void validateNullNumberTest() {
+        pojo.setSalary(null);
         Validator validator = new Validator(pojo).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());

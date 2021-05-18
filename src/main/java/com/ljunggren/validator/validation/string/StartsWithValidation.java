@@ -12,14 +12,13 @@ public class StartsWithValidation extends ValidationChain {
 
     @Override
     public void validate(Annotation annotation, Item item) {
-        if (annotation.annotationType() == StartsWith.class && item.getValue() instanceof String) {
+        if (annotation.annotationType() == StartsWith.class && isString(item.getField())) {
             String startText = ((StartsWith) annotation).startText();
             boolean caseSensitive = ((StartsWith) annotation).caseSensitive();
             Evaluation<String> evaluation = new StartsWithEvaluation(startText, caseSensitive);
-            if (!evaluation.isValid(item.getValue().toString())) {
+            if (!evaluation.isValid(toString(item.getValue()))) {
                 item.addErrorMessage(evaluation.getErrorMessage());
             }
-            return;
         }
         nextChain.validate(annotation, item);
     }

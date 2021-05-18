@@ -18,7 +18,7 @@ public class LessThanOrEqualToValidationTest {
     @Data
     private class LessThanOrEqualToPojo {
         @LessThanOrEqualTo(maximum = 3.2)
-        private double gpa;
+        private Double gpa;
     }
 
     @Test
@@ -31,6 +31,14 @@ public class LessThanOrEqualToValidationTest {
     @Test
     public void validateInvalidTest() {
         Validator validator = new Validator(new LessThanOrEqualToPojo(3.3)).validate();
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getInvalidItems().size());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
+    }
+
+    @Test
+    public void validateNullTest() {
+        Validator validator = new Validator(new LessThanOrEqualToPojo(null)).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
         assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());

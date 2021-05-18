@@ -12,10 +12,10 @@ public class GreaterThanOrEqualToValidation extends ValidationChain {
 
     @Override
     public void validate(Annotation annotation, Item item) {
-        if (annotation.annotationType() == GreaterThanOrEqualTo.class && item.getValue() instanceof Number) {
+        if (annotation.annotationType() == GreaterThanOrEqualTo.class && isNumber(item.getField())) {
             Number minimum = ((GreaterThanOrEqualTo) annotation).minimum();
             Evaluation<Number> evaluation = new GreaterThanOrEqualToEvaluation(minimum);
-            if (!evaluation.isValid((Number) item.getValue())) {
+            if (!evaluation.isValid(toNumber(item.getValue()))) {
                 item.addErrorMessage(evaluation.getErrorMessage());
             }
         }

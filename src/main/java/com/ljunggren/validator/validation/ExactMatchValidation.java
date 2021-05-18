@@ -1,6 +1,7 @@
 package com.ljunggren.validator.validation;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 
 import com.ljunggren.validator.Item;
 import com.ljunggren.validator.annotation.ExactMatch;
@@ -14,11 +15,9 @@ public class ExactMatchValidation extends ValidationChain {
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == ExactMatch.class && canHandleType(item)) {
             Evaluation<String> evaluation = getEvaluation(annotation);
-            if (!evaluation.isValid(item.getValue().toString())) {
+            if (!evaluation.isValid(toString(item.getValue()))) {
                 item.addErrorMessage(evaluation.getErrorMessage());
-                return;
             }
-            return;
         }
         nextChain.validate(annotation, item);
     }
@@ -38,8 +37,8 @@ public class ExactMatchValidation extends ValidationChain {
     }
 
     private boolean canHandleType(Item item) {
-        Object value = item.getValue();
-        return value instanceof String || value instanceof Number;
+        Field field = item.getField();
+        return isString(field) || isNumber(field);
     }
 
 }

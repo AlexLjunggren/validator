@@ -48,7 +48,7 @@ public class StackedValidationTest {
     public void validateInvalidNullTest() {
         StackedPojo pojo = new StackedPojo(null);
         Validator validator = new Validator(pojo).validate();
-        assertEquals(1, validator.getInvalidItems().get(0).getErrorMessages().size());
+        assertEquals(4, validator.getInvalidItems().get(0).getErrorMessages().size());
     }
 
 }

@@ -14,14 +14,12 @@ public class RegexValidation extends ValidationChain {
 
     @Override
     public void validate(Annotation annotation, Item item) {
-        if (annotation.annotationType() == annotationClass && item.getValue() instanceof String) {
+        if (annotation.annotationType() == annotationClass && isString(item.getField())) {
             String regex = ((Regex) annotation).regex();
             Evaluation<String> evaluation = new RegexEvaluation(regex);
-            if (!evaluation.isValid(item.getValue().toString())) {
+            if (!evaluation.isValid(toString(item.getValue()))) {
                 item.addErrorMessage(evaluation.getErrorMessage());
-                return;
             }
-            return;
         }
         nextChain.validate(annotation, item);
     }

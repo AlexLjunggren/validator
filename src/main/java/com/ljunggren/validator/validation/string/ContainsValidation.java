@@ -12,14 +12,13 @@ public class ContainsValidation extends ValidationChain {
 
     @Override
     public void validate(Annotation annotation, Item item) {
-        if (annotation.annotationType() == Contains.class && item.getValue() instanceof String) {
+        if (annotation.annotationType() == Contains.class && isString(item.getField())) {
             String text = ((Contains) annotation).text();
             boolean caseSensitive = ((Contains) annotation).caseSensitive();
             Evaluation<String> evaluation = new ContainsEvaluation(text, caseSensitive);
-            if (!evaluation.isValid(item.getValue().toString())) {
+            if (!evaluation.isValid(toString(item.getValue()))) {
                 item.addErrorMessage(evaluation.getErrorMessage());
             }
-            return;
         }
         nextChain.validate(annotation, item);
     }

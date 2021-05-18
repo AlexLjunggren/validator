@@ -35,4 +35,13 @@ public class AlphaNumericValidationTest {
         assertEquals("name", validator.getInvalidItems().get(0).getMemberName());
     }
 
+    @Test
+    public void validateNullTest() {
+        Validator validator = new Validator(new AlphaNumericPojo(null)).validate();
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getInvalidItems().size());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
+        assertEquals("name", validator.getInvalidItems().get(0).getMemberName());
+    }
+
 }

@@ -45,4 +45,13 @@ public class DateFormatValidationTest {
         assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
     }
 
+    @Test
+    public void validateNullTest() {
+        pojo.setSubmittedDate(null);
+        Validator validator = new Validator(pojo).validate();
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getInvalidItems().size());
+        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
+    }
+
 }

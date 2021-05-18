@@ -14,17 +14,15 @@ public class LengthValidation extends ValidationChain {
         if (annotation.annotationType() == Length.class && canHandleType(item)) {
             int length = ((Length) annotation).length();
             Evaluation<String> evaluation = new LengthEvaluation(length);
-            if (!evaluation.isValid(item.getValue().toString())) {
+            if (!evaluation.isValid(toString(item.getValue()))) {
                 item.addErrorMessage(evaluation.getErrorMessage());
             }
-            return;
         }
         nextChain.validate(annotation, item);
     }
 
     private boolean canHandleType(Item item) {
-        Object value = item.getValue();
-        return value instanceof String || value instanceof Integer || value instanceof Long;
+        return isString(item.getField()) || isNumber(item.getField());
     }
 
 }
