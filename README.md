@@ -78,11 +78,11 @@ Data types supported
 Validates against a custom class
 
 ```java
-@CustomValidator(className = "MyEvaluation")
+@CustomValidator(MyEvaluation.class)
 ```
 
 Required
-- className - [String] Package and class name of custom validation class
+- value - Class that implements Evaluation
 
 **Note:** Custom validation class must implement the Evaluation interface
 
