@@ -91,7 +91,7 @@ Required
 Validates a string is in a given date format
 
 ```java
-@DateFormat(pattern = "yyyy-MM-dd")
+@DateFormat("yyyy-MM-dd")
 ```
 
 Data types supported
