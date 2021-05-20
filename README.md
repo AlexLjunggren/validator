@@ -136,7 +136,7 @@ Data types supported
 Validates variable is of given length
 
 ```java
-@Length(length = 4)
+@Length(4)
 ```
 
 Required
@@ -210,7 +210,7 @@ Data types supported
 Validates variable matches given regex
 
 ```java
-@Regex(regex = "^[a-zA-Z]+$")
+@Regex("^[a-zA-Z]+$")
 ```
 
 Required
@@ -224,7 +224,7 @@ Data types supported
 Validates variable is of given size
 
 ```java
-@Size(size = 3)
+@Size(3)
 ```
 
 Required
@@ -258,7 +258,7 @@ Data types supported
 Validates variable is greater than given number
 
 ```java
-@GreaterThan(minimum = 3.2)
+@GreaterThan(3.2)
 ```
 
 Required
@@ -272,7 +272,7 @@ Data types supported
 Validates variable is greater than or equal to given number
 
 ```java
-@GreaterThanOrEqualTo(minimum = 3.2)
+@GreaterThanOrEqualTo(3.2)
 ```
 
 Required
@@ -286,7 +286,7 @@ Data types supported
 Validates variable is less than given number
 
 ```java
-@LessThan(maximum = 3.2)
+@LessThan(3.2)
 ```
 
 Required
@@ -300,7 +300,7 @@ Data types supported
 Validates variable is less than or equal to given number
 
 ```java
-@LessThanOrEqualTo(maximum = 3.2)
+@LessThanOrEqualTo(3.2)
 ```
 
 Required
