@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import com.ljunggren.validator.Validator;
 import com.ljunggren.validator.annotation.CustomValidator;
+import com.ljunggren.validator.evaluation.AlphaEvaluation;
 
 import lombok.AllArgsConstructor;
 
@@ -13,7 +14,7 @@ public class CustomValidationTest {
     
     @AllArgsConstructor
     private class CustomPojo {
-        @CustomValidator(className = "com.ljunggren.validator.evaluation.AlphaEvaluation")
+        @CustomValidator(AlphaEvaluation.class)
         private String name;
     }
     
@@ -34,7 +35,7 @@ public class CustomValidationTest {
 
     @AllArgsConstructor
     private class NonEvaluationPojo {
-        @CustomValidator(className = "com.ljunggren.validator.validation.AlphaValidation")
+        @CustomValidator(String.class)
         private String name;
     }
     
@@ -43,21 +44,7 @@ public class CustomValidationTest {
         Validator validator = new Validator(new NonEvaluationPojo("Alex")).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
-        assertEquals("CustomValidator className does not implement Evaluation", validator.getInvalidItems().get(0).getErrorMessages().get(0));
+        assertEquals("CustomValidator(String) does not implement Evaluation", validator.getInvalidItems().get(0).getErrorMessages().get(0));
    }
-    
-    @AllArgsConstructor
-    private class InvalidClassPojo {
-        @CustomValidator(className = "com.ljunggren.validator.evaluation.NotRealClass")
-        private String name;
-    }
-    
-    @Test
-    public void validateInvalidClassTest() {
-        Validator validator = new Validator(new InvalidClassPojo("Alex")).validate();
-        assertFalse(validator.isValid());
-        assertEquals(1, validator.getInvalidItems().size());
-        assertEquals("CustomValidator class not found com.ljunggren.validator.evaluation.NotRealClass", validator.getInvalidItems().get(0).getErrorMessages().get(0));
-    }
     
 }

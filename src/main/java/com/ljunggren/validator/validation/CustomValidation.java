@@ -11,9 +11,9 @@ public class CustomValidation extends ValidationChain {
     @Override
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == CustomValidator.class) {
-            String className = ((CustomValidator) annotation).className();
+            Class<?> clazz = ((CustomValidator) annotation).value();
             try {
-                Evaluation<Object> evaluation = instantiateEvaluation(className);
+                Evaluation<Object> evaluation = instantiateEvaluation(clazz);
                 if (!evaluation.isValid(item.getValue())) {
                     item.addErrorMessage(evaluation.getErrorMessage());
                 }
@@ -25,13 +25,12 @@ public class CustomValidation extends ValidationChain {
     }
     
     @SuppressWarnings("unchecked")
-    private Evaluation<Object> instantiateEvaluation(String className) throws Exception {
+    private Evaluation<Object> instantiateEvaluation(Class<?> clazz) throws Exception {
         try {
-            Class<?> clazz = Class.forName(className);
             if (Evaluation.class.isAssignableFrom(clazz)) {
                 return (Evaluation<Object>) clazz.newInstance();
             } 
-            throw new Exception("CustomValidator className does not implement Evaluation");
+            throw new Exception(String.format("CustomValidator(%s) does not implement Evaluation", clazz.getSimpleName()));
         } catch (ClassNotFoundException e) {
             throw new Exception("CustomValidator class not found " + e.getMessage());
         }
