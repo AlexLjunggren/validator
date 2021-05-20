@@ -17,7 +17,7 @@ public class LessThanOrEqualToValidationTest {
     @AllArgsConstructor
     @Data
     private class LessThanOrEqualToPojo {
-        @LessThanOrEqualTo(maximum = 3.2)
+        @LessThanOrEqualTo(3.2)
         private Double gpa;
     }
 

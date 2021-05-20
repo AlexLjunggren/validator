@@ -15,7 +15,7 @@ public class GreaterThanValidationTest {
     @AllArgsConstructor
     @Data
     private class GreaterThanPojo {
-        @GreaterThan(minimum = 3.2)
+        @GreaterThan(3.2)
         private Double gpa;
     }
 

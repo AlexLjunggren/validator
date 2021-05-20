@@ -13,7 +13,7 @@ public class SizeValidation extends ValidationChain {
     @Override
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == Size.class && canHandleType(item)) {
-            int size = ((Size) annotation).size();
+            int size = ((Size) annotation).value();
             Evaluation<Object> evaluation = new SizeEvaluation(size);
             if (!evaluation.isValid(item.getValue())) {
                 item.addErrorMessage(evaluation.getErrorMessage());

@@ -23,14 +23,13 @@ public class SizeValidationTest {
     @AllArgsConstructor
     @Data
     private class SizePojo {
-//        @NotNullValidation
-        @Size(size = 3)
+        @Size(3)
         private String[] names;
 
-        @Size(size = 3)
+        @Size(3)
         private List<Integer> years;
 
-        @Size(size = 2)
+        @Size(2)
         private Map<Integer, String> catalog;
     }
     

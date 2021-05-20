@@ -13,7 +13,7 @@ public class LessThanValidation extends ValidationChain {
     @Override
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == LessThan.class && isNumber(item.getField())) {
-            Number maximum = ((LessThan) annotation).maximum();
+            Number maximum = ((LessThan) annotation).value();
             Evaluation<Number> evaluation = new LessThanEvaluation(maximum);
             if (!evaluation.isValid(toNumber(item.getValue()))) {
                 item.addErrorMessage(evaluation.getErrorMessage());

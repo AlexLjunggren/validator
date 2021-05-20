@@ -18,7 +18,7 @@ public class StackedValidationTest {
     private class StackedPojo {
         @NotNull
         @Alpha
-        @Length(length = 4)
+        @Length(4)
         @ExactMatch(match = "Alex")
         private String name;
     }

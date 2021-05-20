@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface Length {
 
-	int length();
+	int value();
 	
 }

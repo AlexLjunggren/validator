@@ -13,7 +13,7 @@ public class GreaterThanValidation extends ValidationChain {
     @Override
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == GreaterThan.class && isNumber(item.getField())) {
-            Number minimum = ((GreaterThan) annotation).minimum();
+            Number minimum = ((GreaterThan) annotation).value();
             Evaluation<Number> evaluation = new GreaterThanEvaluation(minimum);
             if (!evaluation.isValid(toNumber(item.getValue()))) {
                 item.addErrorMessage(evaluation.getErrorMessage());

@@ -13,7 +13,7 @@ public class RegexValidationTest {
     
     @AllArgsConstructor
     private class RegexPojo {
-        @Regex(regex = "^[a-zA-Z]+$")
+        @Regex("^[a-zA-Z]+$")
         private String name;
     }
 
