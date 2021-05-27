@@ -1,4 +1,4 @@
-package com.ljunggren.validator.annotation;
+package com.ljunggren.validator.annotation.length;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

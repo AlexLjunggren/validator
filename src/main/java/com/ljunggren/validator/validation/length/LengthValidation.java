@@ -1,11 +1,12 @@
-package com.ljunggren.validator.validation;
+package com.ljunggren.validator.validation.length;
 
 import java.lang.annotation.Annotation;
 
 import com.ljunggren.validator.Item;
-import com.ljunggren.validator.annotation.Length;
+import com.ljunggren.validator.annotation.length.Length;
 import com.ljunggren.validator.evaluation.Evaluation;
-import com.ljunggren.validator.evaluation.LengthEvaluation;
+import com.ljunggren.validator.evaluation.length.LengthEvaluation;
+import com.ljunggren.validator.validation.ValidationChain;
 
 public class LengthValidation extends ValidationChain {
 

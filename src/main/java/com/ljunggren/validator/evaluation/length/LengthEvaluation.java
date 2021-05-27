@@ -1,4 +1,6 @@
-package com.ljunggren.validator.evaluation;
+package com.ljunggren.validator.evaluation.length;
+
+import com.ljunggren.validator.evaluation.Evaluation;
 
 public class LengthEvaluation implements Evaluation<String> {
 

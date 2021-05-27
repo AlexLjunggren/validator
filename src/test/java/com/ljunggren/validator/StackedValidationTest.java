@@ -7,8 +7,8 @@ import org.junit.Test;
 
 import com.ljunggren.validator.annotation.Alpha;
 import com.ljunggren.validator.annotation.ExactMatch;
-import com.ljunggren.validator.annotation.Length;
 import com.ljunggren.validator.annotation.NotNull;
+import com.ljunggren.validator.annotation.length.Length;
 
 import lombok.AllArgsConstructor;
 

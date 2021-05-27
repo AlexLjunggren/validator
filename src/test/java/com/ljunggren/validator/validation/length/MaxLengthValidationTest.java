@@ -1,47 +1,43 @@
-package com.ljunggren.validator.validation;
+package com.ljunggren.validator.validation.length;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import com.ljunggren.validator.Validator;
-import com.ljunggren.validator.annotation.Length;
+import com.ljunggren.validator.annotation.length.MaxLength;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-public class LengthValidationTest {
-
+public class MaxLengthValidationTest {
+    
     @AllArgsConstructor
     @Data
-    private class LengthPojo {
-        @Length(4)
+    private class MaxLengthPojo {
+        @MaxLength(4)
         private String name;
-
-        @Length(5)
+        
+        @MaxLength(5)
         private Integer zipCode;
-
-        @Length(6)
-        private long salary;
     }
-
-    private LengthPojo pojo;
+    
+    private MaxLengthPojo pojo;
 
     @Before
     public void setup() {
-        pojo = new LengthPojo("Alex", 46123, 100000);
+        pojo = new MaxLengthPojo("Alex", 46123);
     }
-
+    
+    
     @Test
     public void validateTest() {
         Validator validator = new Validator(pojo).validate();
         assertTrue(validator.isValid());
         assertEquals(0, validator.getInvalidItems().size());
     }
-
+    
     @Test
     public void validateInvalidNameTest() {
         pojo.setName("Alexander");
@@ -53,7 +49,7 @@ public class LengthValidationTest {
 
     @Test
     public void validateInvalidZipCodeTest() {
-        pojo.setZipCode(4612);
+        pojo.setZipCode(461230);
         Validator validator = new Validator(pojo).validate();
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
@@ -61,21 +57,19 @@ public class LengthValidationTest {
     }
 
     @Test
-    public void validateInvalidSalaryTest() {
-        pojo.setSalary(40000);
+    public void validateNullNameTest() {
+        pojo.setName(null);
         Validator validator = new Validator(pojo).validate();
-        assertFalse(validator.isValid());
-        assertEquals(1, validator.getInvalidItems().size());
-        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
+        assertTrue(validator.isValid());
+        assertEquals(0, validator.getInvalidItems().size());
     }
-
+    
     @Test
-    public void validateNullSalaryTest() {
+    public void validateNullZipCodeTest() {
         pojo.setZipCode(null);
         Validator validator = new Validator(pojo).validate();
-        assertFalse(validator.isValid());
-        assertEquals(1, validator.getInvalidItems().size());
-        assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
+        assertTrue(validator.isValid());
+        assertEquals(0, validator.getInvalidItems().size());
     }
-
+    
 }

@@ -16,7 +16,6 @@ import com.ljunggren.validator.validation.CustomValidation;
 import com.ljunggren.validator.validation.EmailValidation;
 import com.ljunggren.validator.validation.ExactMatchValidation;
 import com.ljunggren.validator.validation.DateFormatValidation;
-import com.ljunggren.validator.validation.LengthValidation;
 import com.ljunggren.validator.validation.NotEmptyValidation;
 import com.ljunggren.validator.validation.NotNullValidation;
 import com.ljunggren.validator.validation.NumberValidation;
@@ -25,6 +24,8 @@ import com.ljunggren.validator.validation.OptionalValidation;
 import com.ljunggren.validator.validation.RegexValidation;
 import com.ljunggren.validator.validation.SizeValidation;
 import com.ljunggren.validator.validation.ValidationChain;
+import com.ljunggren.validator.validation.length.LengthValidation;
+import com.ljunggren.validator.validation.length.MaxLengthValidation;
 import com.ljunggren.validator.validation.math.BetweenValidation;
 import com.ljunggren.validator.validation.math.GreaterThanOrEqualToValidation;
 import com.ljunggren.validator.validation.math.GreaterThanValidation;
@@ -133,7 +134,6 @@ public class Validator {
                 .nextChain(new CustomValidation()
                 .nextChain(new EmailValidation()
                 .nextChain(new ExactMatchValidation()
-                .nextChain(new LengthValidation()
                 .nextChain(new NotEmptyValidation()
                 .nextChain(new NotNullValidation()
                 .nextChain(new NumericValidation()
@@ -141,8 +141,14 @@ public class Validator {
                 .nextChain(new RegexValidation()
                 .nextChain(new SizeValidation()
                 .nextChain(new DateFormatValidation()
-                .nextChain(mathChain()
-                        )))))))))))));
+                .nextChain(lengthChain()
+                        ))))))))))));
+    }
+    
+    private ValidationChain lengthChain() {
+        return new LengthValidation()
+                .nextChain(new MaxLengthValidation()
+                .nextChain(mathChain()));
     }
     
     private ValidationChain mathChain() {

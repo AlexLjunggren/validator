@@ -140,12 +140,26 @@ Validates variable is of given length
 ```
 
 Required
-- length - [int]
+- value - [int]
 
 Data types supported
 - String
-- Integer
-- Long
+- Number
+
+## Max Length ##
+
+Validates variable is of given length
+
+```java
+@MaxLength(4)
+```
+
+Required
+- value - [int]
+
+Data types supported
+- String
+- Number
 
 ## Not Empty ##
 
