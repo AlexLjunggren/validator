@@ -148,10 +148,25 @@ Data types supported
 
 ## Max Length ##
 
-Validates variable is of given length
+Validates variable less than or equal to given length
 
 ```java
 @MaxLength(4)
+```
+
+Required
+- value - [int]
+
+Data types supported
+- String
+- Number
+
+## Min Length ##
+
+Validates variable is greater than or equal to given length
+
+```java
+@MinLength(4)
 ```
 
 Required

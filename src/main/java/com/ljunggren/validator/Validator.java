@@ -26,6 +26,7 @@ import com.ljunggren.validator.validation.SizeValidation;
 import com.ljunggren.validator.validation.ValidationChain;
 import com.ljunggren.validator.validation.length.LengthValidation;
 import com.ljunggren.validator.validation.length.MaxLengthValidation;
+import com.ljunggren.validator.validation.length.MinLengthValidation;
 import com.ljunggren.validator.validation.math.BetweenValidation;
 import com.ljunggren.validator.validation.math.GreaterThanOrEqualToValidation;
 import com.ljunggren.validator.validation.math.GreaterThanValidation;
@@ -148,7 +149,8 @@ public class Validator {
     private ValidationChain lengthChain() {
         return new LengthValidation()
                 .nextChain(new MaxLengthValidation()
-                .nextChain(mathChain()));
+                .nextChain(new MinLengthValidation()
+                .nextChain(mathChain())));
     }
     
     private ValidationChain mathChain() {
