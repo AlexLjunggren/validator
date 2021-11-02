@@ -362,7 +362,7 @@ Validates variable contains a given value
 
 ```java
 @Contains(text = "contain")
-@Contains(startText = "contain", caseSensitive = false)
+@Contains(text = "contain", caseSensitive = false)
 ```
 
 Options
@@ -376,8 +376,8 @@ Data types supported
 Validates variable starts with given value
 
 ```java
-@StartsWith(startText = "Begins")
-@StartsWith(startText = "Begins", caseSensitive = false)
+@StartsWith(text = "Begins")
+@StartsWith(text = "Begins", caseSensitive = false)
 ```
 
 Options
@@ -391,8 +391,8 @@ Data types supported
 Validates variable begins with given value
 
 ```java
-@EndsWith(endText = "Begins")
-@EndsWith(endText = "Begins", caseSensitive = false)
+@EndsWith(text = "Ends")
+@EndsWith(text = "Ends", caseSensitive = false)
 ```
 
 Options

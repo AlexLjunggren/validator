@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface EndsWith {
 
-    String endText();
+    String text();
     boolean caseSensitive() default true;
     
 }

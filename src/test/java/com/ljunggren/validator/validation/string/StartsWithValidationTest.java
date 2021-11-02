@@ -15,7 +15,7 @@ public class StartsWithValidationTest {
     @AllArgsConstructor
     @Data
     private class StartsWithPojo {
-        @StartsWith(startText = "Alex")
+        @StartsWith(text = "Alex")
         private String note;
     }
 

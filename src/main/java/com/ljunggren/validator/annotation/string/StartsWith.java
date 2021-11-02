@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface StartsWith {
 
-    String startText();
+    String text();
     boolean caseSensitive() default true;
     
 }

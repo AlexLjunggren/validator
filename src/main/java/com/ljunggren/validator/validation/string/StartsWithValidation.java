@@ -13,7 +13,7 @@ public class StartsWithValidation extends ValidationChain {
     @Override
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == StartsWith.class && isString(item.getField())) {
-            String startText = ((StartsWith) annotation).startText();
+            String startText = ((StartsWith) annotation).text();
             boolean caseSensitive = ((StartsWith) annotation).caseSensitive();
             Evaluation<String> evaluation = new StartsWithEvaluation(startText, caseSensitive);
             if (!evaluation.isValid(toString(item.getValue()))) {
