@@ -28,7 +28,7 @@ public class CustomValidation extends ValidationChain {
     private Evaluation<Object> instantiateEvaluation(Class<?> clazz) throws Exception {
         try {
             if (Evaluation.class.isAssignableFrom(clazz)) {
-                return (Evaluation<Object>) clazz.newInstance();
+                return (Evaluation<Object>) clazz.getDeclaredConstructor().newInstance();
             } 
             throw new Exception(String.format("CustomValidator(%s) does not implement Evaluation", clazz.getSimpleName()));
         } catch (ClassNotFoundException e) {
