@@ -5,6 +5,8 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.reflect.FieldUtils;
 
@@ -64,6 +66,13 @@ public class Validator {
     
     public boolean isValid() {
         return invalidItems.isEmpty();
+    }
+    
+    public Set<String> getErrorMessages() {
+        return invalidItems.stream()
+                .map(error -> error.getErrorMessages())
+                .flatMap(message -> message.stream())
+                .collect(Collectors.toSet());
     }
     
     private void extractInvalidItems(List<Item> items) {
