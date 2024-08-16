@@ -12,10 +12,10 @@ public class DateFormatValidation extends ValidationChain {
     @Override
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == DateFormat.class && isString(item.getField())) {
-            String format = ((DateFormat) annotation).value();
+            String format = ((DateFormat) annotation).format();
             Evaluation<String> evaluation = new DateFormatEvaluation(format);
             if (!evaluation.isValid(toString(item.getValue()))) {
-                item.addErrorMessage(evaluation.getErrorMessage());
+                item.addErrorMessage(((DateFormat) annotation).message());
             }
         }
         nextChain.validate(annotation, item);

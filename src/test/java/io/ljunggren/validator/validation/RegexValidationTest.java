@@ -14,7 +14,7 @@ public class RegexValidationTest {
     
     @AllArgsConstructor
     private class RegexPojo {
-        @Regex("^[a-zA-Z]+$")
+        @Regex(regex = "^[a-zA-Z]+$", message = "Not a valid value")
         private String name;
     }
 

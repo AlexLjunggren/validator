@@ -16,7 +16,7 @@ public class GreaterThanOrEqualToValidation extends ValidationChain {
             Number minimum = ((GreaterThanOrEqualTo) annotation).value();
             Evaluation<Number> evaluation = new GreaterThanOrEqualToEvaluation(minimum);
             if (!evaluation.isValid(toNumber(item.getValue()))) {
-                item.addErrorMessage(evaluation.getErrorMessage());
+                item.addErrorMessage(((GreaterThanOrEqualTo) annotation).message());
             }
         }
         nextChain.validate(annotation, item);

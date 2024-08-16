@@ -14,4 +14,6 @@ public @interface ExactMatch {
 	boolean caseSensitive() default true;
 	
 	public static final String NULL = "THIS IS A SPECIAL NULL VALUE - DO NOT USE";
+    String message();
+    
 }

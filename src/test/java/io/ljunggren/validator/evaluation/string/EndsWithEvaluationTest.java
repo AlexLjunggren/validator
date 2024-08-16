@@ -1,6 +1,5 @@
 package io.ljunggren.validator.evaluation.string;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -26,9 +25,4 @@ public class EndsWithEvaluationTest {
         assertFalse(new EndsWithEvaluation(null, false).isValid("This was coded by Alex"));
     }
     
-    @Test
-    public void errorMessageTest() {
-        assertEquals("Must end with Alex", new EndsWithEvaluation("Alex", true).getErrorMessage());
-    }
-
 }

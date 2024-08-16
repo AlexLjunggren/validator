@@ -10,9 +10,4 @@ public class EmailEvaluation implements Evaluation<String> {
         return value == null ? false : value.matches(regex);
     }
 
-    @Override
-    public String getErrorMessage() {
-        return "Must be a valid email";
-    }
-
 }

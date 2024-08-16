@@ -29,9 +29,4 @@ public class SizeEvaluation implements Evaluation<Object> {
         return 0;
     }
 
-    @Override
-    public String getErrorMessage() {
-        return String.format("Must be of size %d", size);
-    }
-
 }

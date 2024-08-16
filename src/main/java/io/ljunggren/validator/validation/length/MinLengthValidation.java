@@ -16,7 +16,7 @@ public class MinLengthValidation extends ValidationChain {
             int length = ((MinLength) annotation).value();
             Evaluation<Object> evaluation = new MinLengthEvaluation(length);
             if (!evaluation.isValid(item.getValue())) {
-                item.addErrorMessage(evaluation.getErrorMessage());
+                item.addErrorMessage(((MinLength) annotation).message());
             }
         }
         nextChain.validate(annotation, item);

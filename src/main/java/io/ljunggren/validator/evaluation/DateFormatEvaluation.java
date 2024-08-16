@@ -26,9 +26,4 @@ public class DateFormatEvaluation implements Evaluation<String> {
         }
     }
 
-    @Override
-    public String getErrorMessage() {
-        return String.format("Must be in %s format", format);
-    }
-
 }

@@ -9,6 +9,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface CustomValidator {
 
-    Class<?> value();
+    Class<?> customClass();
+    String message();
     
 }

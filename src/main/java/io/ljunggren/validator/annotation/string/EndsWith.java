@@ -11,5 +11,6 @@ public @interface EndsWith {
 
     String text();
     boolean caseSensitive() default true;
+    String message();
     
 }

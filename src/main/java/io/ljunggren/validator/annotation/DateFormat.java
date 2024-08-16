@@ -9,6 +9,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface DateFormat {
 
-    String value();
+    String format();
+    String message();
     
 }

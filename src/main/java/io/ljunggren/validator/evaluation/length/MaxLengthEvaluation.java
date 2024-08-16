@@ -18,9 +18,4 @@ public class MaxLengthEvaluation implements Evaluation<Object> {
         return String.valueOf(value).length() <= length;
     }
     
-    @Override
-    public String getErrorMessage() {
-        return String.format("Must not exceed length of %d", length);
-    }
-
 }

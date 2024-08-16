@@ -23,9 +23,4 @@ public class ContainsEvaluation implements Evaluation<String> {
         return value.contains(text) ? true : false;
     }
 
-    @Override
-    public String getErrorMessage() {
-        return String.format("Must contain %s", text);
-    }
-
 }

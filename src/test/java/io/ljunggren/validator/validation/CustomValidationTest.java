@@ -15,7 +15,7 @@ public class CustomValidationTest {
     
     @AllArgsConstructor
     private class CustomPojo {
-        @CustomValidator(AlphaEvaluation.class)
+        @CustomValidator(customClass = AlphaEvaluation.class, message = "Must be all letters")
         private String name;
     }
     
@@ -36,7 +36,7 @@ public class CustomValidationTest {
 
     @AllArgsConstructor
     private class NonEvaluationPojo {
-        @CustomValidator(String.class)
+        @CustomValidator(customClass = String.class, message = "Must be a string")
         private String name;
     }
     

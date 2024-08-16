@@ -1,6 +1,5 @@
 package io.ljunggren.validator.evaluation;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -28,9 +27,4 @@ public class ExactMatchesEvaluationTest {
         assertFalse(new ExactMatchesEvaluation(null, false).isValid("MST"));
     }
 
-    @Test
-    public void errorMessageTest() {
-        assertEquals("Value must be one of the following: PST, MST, CST, EST", new ExactMatchesEvaluation(timeZones, true).getErrorMessage());
-        assertEquals("Value must be one of the following: PST, MST, CST, EST", new ExactMatchesEvaluation(timeZones, false).getErrorMessage());
-    }
 }

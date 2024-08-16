@@ -25,9 +25,4 @@ public class NotEmptyEvaluation implements Evaluation<Object> {
         return false;
     }
 
-    @Override
-    public String getErrorMessage() {
-        return "Cannot be empty";
-    }
-
 }

@@ -16,7 +16,7 @@ public class LessThanOrEqualToValidation extends ValidationChain {
             Number maximum = ((LessThanOrEqualTo) annotation).value();
             Evaluation<Number> evaluation = new LessThanOrEqualToEvaluation(maximum);
             if (!evaluation.isValid(toNumber(item.getValue()))) {
-                item.addErrorMessage(evaluation.getErrorMessage());
+                item.addErrorMessage(((LessThanOrEqualTo) annotation).message());
             }
         }
         nextChain.validate(annotation, item);

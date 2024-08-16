@@ -9,14 +9,13 @@ import io.ljunggren.validator.evaluation.NumericEvaluation;
 
 public class NumericValidation extends ValidationChain {
 
-    private Class<?> annotationClass = Numeric.class;
     private Evaluation<String> evaluation = new NumericEvaluation();
 
     @Override
     public void validate(Annotation annotation, Item item) {
-        if (annotation.annotationType() == annotationClass && isString(item.getField())) {
+        if (annotation.annotationType() == Numeric.class && isString(item.getField())) {
             if (!evaluation.isValid(toString(item.getValue()))) {
-                item.addErrorMessage(evaluation.getErrorMessage());
+                item.addErrorMessage(((Numeric) annotation).message());
             }
         }
         nextChain.validate(annotation, item);

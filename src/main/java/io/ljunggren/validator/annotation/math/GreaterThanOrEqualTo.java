@@ -10,5 +10,6 @@ import java.lang.annotation.Target;
 public @interface GreaterThanOrEqualTo {
 
     double value();
+    String message();
     
 }

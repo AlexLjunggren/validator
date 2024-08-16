@@ -18,9 +18,4 @@ public class MinLengthEvaluation implements Evaluation<Object> {
         return String.valueOf(value).length() >= length;
     }
     
-    @Override
-    public String getErrorMessage() {
-        return String.format("Must not be less than length of %d", length);
-    }
-
 }

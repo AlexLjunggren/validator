@@ -23,9 +23,4 @@ public class EndsWithEvaluation implements Evaluation<String> {
         return value.endsWith(endText) ? true : false;
     }
 
-    @Override
-    public String getErrorMessage() {
-        return String.format("Must end with %s", endText);
-    }
-
 }

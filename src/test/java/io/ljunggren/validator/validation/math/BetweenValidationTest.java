@@ -16,7 +16,7 @@ public class BetweenValidationTest {
     @AllArgsConstructor
     @Data
     private class BetweenPojo {
-        @Between(minimum = 3, maximum = 4)
+        @Between(minimum = 3, maximum = 4, message = "Must be between 3 and 4")
         private Double gpa;
     }
 
@@ -46,7 +46,7 @@ public class BetweenValidationTest {
     @AllArgsConstructor
     @Data
     private class BetweenInclusivePojo {
-        @Between(minimum = 3, maximum = 4, inclusive = true)
+        @Between(minimum = 3, maximum = 4, inclusive = true, message = "Must be between 3 and 4 inclusive")
         private double gpa;
     }
 

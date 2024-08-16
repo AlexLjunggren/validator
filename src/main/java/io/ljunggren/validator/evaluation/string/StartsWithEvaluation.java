@@ -23,9 +23,4 @@ public class StartsWithEvaluation implements Evaluation<String> {
         return value.startsWith(startText) ? true : false;
     }
 
-    @Override
-    public String getErrorMessage() {
-        return String.format("Must start with %s", startText);
-    }
-
 }

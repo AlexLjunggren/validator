@@ -40,18 +40,4 @@ public class ValidatorTest {
         assertEquals(0, validator.getInvalidItems().size());
     }
     
-    @Test
-    public void templateTest() {
-        Validator validator = new Validator(new TestPojo("Alex")).template();
-        assertEquals(1, validator.getInvalidItems().size());
-        assertEquals(2, validator.getInvalidItems().get(0).getErrorMessages().size());
-    }
-
-    @Test
-    public void templateNullTest() {
-        Validator validator = new Validator(new TestPojo(null)).template();
-        assertEquals(1, validator.getInvalidItems().size());
-        assertEquals(2, validator.getInvalidItems().get(0).getErrorMessages().size());
-    }
-
 }

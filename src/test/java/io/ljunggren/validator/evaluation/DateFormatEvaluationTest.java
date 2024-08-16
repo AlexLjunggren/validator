@@ -1,6 +1,5 @@
 package io.ljunggren.validator.evaluation;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -18,9 +17,4 @@ public class DateFormatEvaluationTest {
         assertFalse(new DateFormatEvaluation("MM-dd-yyyy").isValid(null));
     }
     
-    @Test
-    public void errorMessageTest() {
-        assertEquals("Must be in MM-dd-yyyy format", new DateFormatEvaluation("MM-dd-yyyy").getErrorMessage());
-    }
-
 }

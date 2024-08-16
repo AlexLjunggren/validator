@@ -9,9 +9,4 @@ public class NumberEvaluation implements Evaluation<String> {
         return value == null || value.isEmpty() ? false : value.matches(regex);
     }
 
-    @Override
-    public String getErrorMessage() {
-        return "Must be a number";
-    }
-
 }

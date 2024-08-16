@@ -10,5 +10,6 @@ import java.lang.annotation.Target;
 public @interface MaxLength {
 
     int value();
+    String message();
     
 }

@@ -1,6 +1,5 @@
 package io.ljunggren.validator.evaluation;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -24,9 +23,4 @@ public class NotEmptyEvaluationTest {
         assertFalse(evaluation.isValid(null));
     }
     
-    @Test
-    public void errorMessageTest() {
-        assertEquals("Cannot be empty", evaluation.getErrorMessage());
-    }
-
 }

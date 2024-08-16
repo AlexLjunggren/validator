@@ -1,6 +1,5 @@
 package io.ljunggren.validator.evaluation;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -26,11 +25,6 @@ public class ExactMatchEvaluationTest {
         assertFalse(new ExactMatchEvaluation("test", false).isValid("1234"));
         assertFalse(new ExactMatchEvaluation("test", false).isValid(null));
         assertFalse(new ExactMatchEvaluation(null, false).isValid("test"));
-    }
-
-    @Test
-    public void errorMessageTest() {
-        assertEquals("Value must be 'Test'", new ExactMatchEvaluation("Test", false).getErrorMessage());
     }
 
 }

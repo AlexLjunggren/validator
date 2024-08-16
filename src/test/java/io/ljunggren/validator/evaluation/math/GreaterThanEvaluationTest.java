@@ -1,6 +1,5 @@
 package io.ljunggren.validator.evaluation.math;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -20,9 +19,4 @@ public class GreaterThanEvaluationTest {
         assertFalse(new GreaterThanEvaluation(4).isValid(4));
     }
     
-    @Test
-    public void errorMessageTest() {
-        assertEquals("Must be greater than 4",  new GreaterThanEvaluation(4).getErrorMessage());
-    }
-
 }

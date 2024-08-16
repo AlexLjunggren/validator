@@ -1,6 +1,5 @@
 package io.ljunggren.validator.evaluation;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -31,9 +30,4 @@ public class SizeEvaluationTest {
         assertFalse(new SizeEvaluation(1).isValid(null));
     }
     
-    @Test
-    public void errerMessageTest() {
-        assertEquals("Must be of size 4", new SizeEvaluation(4).getErrorMessage());
-    }
-
 }

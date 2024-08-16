@@ -1,6 +1,5 @@
 package io.ljunggren.validator.evaluation.length;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -19,9 +18,4 @@ public class MinLengthEvaluationTest {
         assertFalse(new MinLengthEvaluation(5).isValid(10.3));
   }
     
-    @Test
-    public void errorMessageTest() {
-        assertEquals("Must not be less than length of 4", new MinLengthEvaluation(4).getErrorMessage());
-    }
-
 }

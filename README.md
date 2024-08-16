@@ -45,12 +45,6 @@ Get error message for invalid Item
 items.get(0).getErrorMessage();
 ```
 
-Template - Get all possible validation messages
-
-```java
-validator.template();
-```
-
 ## Alpha ##
 
 Validates variable consists of only letters

@@ -22,13 +22,13 @@ public class SizeValidationTest {
     @AllArgsConstructor
     @Data
     private class SizePojo {
-        @Size(3)
+        @Size(value = 3, message = "Must have 3 values")
         private String[] names;
 
-        @Size(3)
+        @Size(value = 3, message = "Must have 3 values")
         private List<Integer> years;
 
-        @Size(2)
+        @Size(value = 2, message = "Must have 2 itmes")
         private Map<Integer, String> catalog;
     }
     

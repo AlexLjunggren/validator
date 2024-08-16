@@ -11,5 +11,6 @@ public @interface Contains {
 
     String text();
     boolean caseSensitive() default true;
+    String message();
 
 }

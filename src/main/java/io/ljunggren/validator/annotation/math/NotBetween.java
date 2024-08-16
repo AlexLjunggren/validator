@@ -12,5 +12,6 @@ public @interface NotBetween {
     double minimum();
     double maximum();
     boolean inclusive() default false;
+    String message();
     
 }

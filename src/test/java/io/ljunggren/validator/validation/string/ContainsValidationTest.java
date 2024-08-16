@@ -16,7 +16,7 @@ public class ContainsValidationTest {
     @AllArgsConstructor
     @Data
     private class ContainsPojo {
-        @Contains(text = "coded")
+        @Contains(text = "coded", message = "Must contain coded")
         private String note;
     }
     

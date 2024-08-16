@@ -17,10 +17,10 @@ public class MinLengthValidationTest {
     @AllArgsConstructor
     @Data
     private class MinLengthPojo {
-        @MinLength(4)
+        @MinLength(value = 4, message = "Cannot be less than 4 characters")
         private String name;
         
-        @MinLength(5)
+        @MinLength(value = 5, message = "Cannot be less than 5 digits")
         private Integer zipCode;
     }
     

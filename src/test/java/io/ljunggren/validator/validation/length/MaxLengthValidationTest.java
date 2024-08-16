@@ -17,10 +17,10 @@ public class MaxLengthValidationTest {
     @AllArgsConstructor
     @Data
     private class MaxLengthPojo {
-        @MaxLength(4)
+        @MaxLength(value = 4, message = "Cannot exceed 4 characters")
         private String name;
         
-        @MaxLength(5)
+        @MaxLength(value = 5, message = "Cannot exceed 5 characters")
         private Integer zipCode;
     }
     

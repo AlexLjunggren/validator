@@ -16,7 +16,7 @@ public class LessThanValidationTest {
     @AllArgsConstructor
     @Data
     private class LessThanPojo {
-        @LessThan(3.2)
+        @LessThan(value = 3.2, message = "Must be less than 3.2")
         private Double gpa;
     }
 

@@ -30,12 +30,4 @@ public class BetweenEvaluation implements Evaluation<Number> {
         return minimum.doubleValue() < value.doubleValue() && value.doubleValue() < maximum.doubleValue();
     }
 
-    @Override
-    public String getErrorMessage() {
-        if (inclusive) {
-            return String.format("Must be between %s and %s, inclusive", minimum.toString(), maximum.toString());
-        }
-        return String.format("Must be between %s and %s", minimum.toString(), maximum.toString());
-    }
-
 }

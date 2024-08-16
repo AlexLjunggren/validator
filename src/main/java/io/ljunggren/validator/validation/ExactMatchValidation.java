@@ -16,7 +16,7 @@ public class ExactMatchValidation extends ValidationChain {
         if (annotation.annotationType() == ExactMatch.class && canHandleType(item)) {
             Evaluation<String> evaluation = getEvaluation(annotation);
             if (!evaluation.isValid(toString(item.getValue()))) {
-                item.addErrorMessage(evaluation.getErrorMessage());
+                item.addErrorMessage(((ExactMatch) annotation).message());
             }
         }
         nextChain.validate(annotation, item);

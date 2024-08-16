@@ -9,4 +9,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface Number {
 
+    String message() default "Must be a number";
+    
 }

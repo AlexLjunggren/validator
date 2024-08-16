@@ -16,7 +16,7 @@ public class GreaterThanValidationTest {
     @AllArgsConstructor
     @Data
     private class GreaterThanPojo {
-        @GreaterThan(3.2)
+        @GreaterThan(value = 3.2, message = "Must be greater than 3.2")
         private Double gpa;
     }
 

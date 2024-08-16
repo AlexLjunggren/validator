@@ -18,9 +18,4 @@ public class LessThanEvaluation implements Evaluation<Number> {
         return value.doubleValue() < maximum.doubleValue();
     }
 
-    @Override
-    public String getErrorMessage() {
-        return String.format("Must be less than %s", maximum.toString());
-    }
-    
 }

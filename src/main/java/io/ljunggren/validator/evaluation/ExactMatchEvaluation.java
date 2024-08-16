@@ -21,9 +21,4 @@ public class ExactMatchEvaluation implements Evaluation<String> {
         return value.equals(match);
     }
 
-    @Override
-    public String getErrorMessage() {
-        return String.format("Value must be '%s'", match);
-    }
-
 }

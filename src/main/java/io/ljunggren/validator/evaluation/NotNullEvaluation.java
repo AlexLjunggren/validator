@@ -7,9 +7,4 @@ public class NotNullEvaluation implements Evaluation<Object> {
         return value != null;
     }
 
-    @Override
-    public String getErrorMessage() {
-        return "Cannot be null";
-    }
-
 }

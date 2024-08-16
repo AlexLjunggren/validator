@@ -13,12 +13,13 @@ public class NotBetweenValidation extends ValidationChain {
     @Override
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == NotBetween.class && isNumber(item.getField())) {
-            Number minimum = ((NotBetween) annotation).minimum();
-            Number maximum = ((NotBetween) annotation).maximum();
-            boolean inclusive = ((NotBetween) annotation).inclusive();
+            NotBetween notBeteen = (NotBetween) annotation;
+            Number minimum = notBeteen.minimum();
+            Number maximum = notBeteen.maximum();
+            boolean inclusive = notBeteen.inclusive();
             Evaluation<Number> evaluation = new NotBetweenEvaluation(minimum, maximum, inclusive);
             if (!evaluation.isValid(toNumber(item.getValue()))) {
-                item.addErrorMessage(evaluation.getErrorMessage());
+                item.addErrorMessage(notBeteen.message());
             }
         }
         nextChain.validate(annotation, item);

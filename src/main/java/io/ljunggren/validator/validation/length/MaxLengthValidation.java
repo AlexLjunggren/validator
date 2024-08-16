@@ -16,7 +16,7 @@ public class MaxLengthValidation extends ValidationChain {
             int length = ((MaxLength) annotation).value();
             Evaluation<Object> evaluation = new MaxLengthEvaluation(length);
             if (!evaluation.isValid(item.getValue())) {
-                item.addErrorMessage(evaluation.getErrorMessage());
+                item.addErrorMessage(((MaxLength) annotation).message());
             }
         }
         nextChain.validate(annotation, item);

@@ -17,22 +17,22 @@ public class ExactMatchValidationTest {
     @AllArgsConstructor
     @Data
     private class ExactMatchPojo {
-        @ExactMatch(match = "Alex")
+        @ExactMatch(match = "Alex", message = "Must be Alex")
         private String firstName;
 
-        @ExactMatch(match = "Ljunggren", caseSensitive = false)
+        @ExactMatch(match = "Ljunggren", caseSensitive = false, message = "Must be Ljunggren")
         private String lastName;
 
-        @ExactMatch(match = "46123")
+        @ExactMatch(match = "46123", message = "Must be 46123")
         private int zipCode;
 
-        @ExactMatch(match = "100000")
+        @ExactMatch(match = "100000", message = "Must be 100000")
         private Long salary;
 
-        @ExactMatch(matches = { "PST", "MST", "CST", "EST" })
+        @ExactMatch(matches = { "PST", "MST", "CST", "EST" }, message = "Must be one of the following: PST, MST, CST, EST")
         private String timeZone;
 
-        @ExactMatch(matches = { "1999", "2020", "2021" })
+        @ExactMatch(matches = { "1999", "2020", "2021" }, message = "Must be one of the following: 1999, 2020, 2021")
         private int year;
     }
 
@@ -128,30 +128,6 @@ public class ExactMatchValidationTest {
         assertFalse(validator.isValid());
         assertEquals(1, validator.getInvalidItems().size());
         assertFalse(validator.getInvalidItems().get(0).getErrorMessages().isEmpty());
-    }
-
-    @AllArgsConstructor
-    @Data
-    private class ExactMatchNoArgsPojo {
-        @ExactMatch()
-        private String name;
-
-        @ExactMatch()
-        private String timeZone;
-    }
-
-    @Test
-    public void validateNoArgsInvalidTest() {
-        ExactMatchNoArgsPojo pojo = new ExactMatchNoArgsPojo("Alex", "EST");
-        Validator validator = new Validator(pojo).validate();
-        assertFalse(validator.isValid());
-    }
-
-    @Test
-    public void validateNoArgsTest() {
-        ExactMatchNoArgsPojo pojo = new ExactMatchNoArgsPojo("", "");
-        Validator validator = new Validator(pojo).validate();
-        assertFalse(validator.isValid());
     }
 
 }

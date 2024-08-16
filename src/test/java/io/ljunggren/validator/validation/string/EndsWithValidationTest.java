@@ -16,7 +16,7 @@ public class EndsWithValidationTest {
     @AllArgsConstructor
     @Data
     private class EndsWithPojo {
-        @EndsWith(text = "Alex")
+        @EndsWith(text = "Alex", message = "Must end with Alex")
         private String note;
     }
 

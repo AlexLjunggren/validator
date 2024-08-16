@@ -17,7 +17,7 @@ public class DateFormatValidationTest {
     @AllArgsConstructor
     @Data
     private class DatePojo {
-        @DateFormat("yyyy-MM-dd")
+        @DateFormat(format = "yyyy-MM-dd", message = "Must be in yyyy-MM-dd format")
         private String submittedDate;
     }
     

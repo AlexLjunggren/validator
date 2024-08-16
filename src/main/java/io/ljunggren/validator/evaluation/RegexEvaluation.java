@@ -8,12 +8,9 @@ public class RegexEvaluation implements Evaluation<String> {
         this.regex = regex;
     }
 
+    @Override
     public boolean isValid(String value) {
         return value == null || regex == null ? false : value.matches(regex);
-    }
-
-    public String getErrorMessage() {
-        return String.format("Must match %s", regex);
     }
 
 }

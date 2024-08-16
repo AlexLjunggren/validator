@@ -22,7 +22,6 @@ import io.ljunggren.validator.validation.NotEmptyValidation;
 import io.ljunggren.validator.validation.NotNullValidation;
 import io.ljunggren.validator.validation.NumberValidation;
 import io.ljunggren.validator.validation.NumericValidation;
-import io.ljunggren.validator.validation.OptionalValidation;
 import io.ljunggren.validator.validation.RegexValidation;
 import io.ljunggren.validator.validation.SizeValidation;
 import io.ljunggren.validator.validation.ValidationChain;
@@ -53,13 +52,6 @@ public class Validator {
     public Validator validate() {
         List<Item> items = findItems(object);
         validateItems(items);
-        extractInvalidItems(items);
-        return this;
-    }
-    
-    public Validator template() {
-        List<Item> items = findItems(object);
-        templateItems(items);
         extractInvalidItems(items);
         return this;
     }
@@ -120,22 +112,6 @@ public class Validator {
         });
     }
     
-    private void templateItems(List<Item> items) {
-        items.forEach(item -> {
-            item.setValue(null);
-            templateItem(item);
-        });
-    }
-
-    private void templateItem(Item item) {
-        Annotation[] annotations = item.getField().getAnnotations();
-        Arrays.asList(annotations).forEach(annotation -> {
-            new OptionalValidation()
-                    .nextChain(getValidationChain(annotation, item))
-                    .validate(annotation, item);
-        });
-    }
-
     private ValidationChain getValidationChain(Annotation annotation, Item item) {
         return new AlphaNumericValidation()
                 .nextChain(new AlphaValidation()

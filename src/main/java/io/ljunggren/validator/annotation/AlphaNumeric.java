@@ -9,4 +9,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface AlphaNumeric {
 
+    String message() default "Must be alphanumeric";
+    
 }

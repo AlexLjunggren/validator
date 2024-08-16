@@ -1,6 +1,5 @@
 package io.ljunggren.validator.evaluation.length;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -19,9 +18,4 @@ public class MaxLengthEvaluationTest {
         assertFalse(new MaxLengthEvaluation(3).isValid(1234));
     }
 
-    @Test
-    public void errorMessageTest() {
-        assertEquals("Must not exceed length of 4", new MaxLengthEvaluation(4).getErrorMessage());
-    }
-    
 }

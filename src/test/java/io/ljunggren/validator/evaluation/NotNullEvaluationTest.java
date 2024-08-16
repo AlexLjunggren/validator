@@ -1,6 +1,5 @@
 package io.ljunggren.validator.evaluation;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -17,11 +16,6 @@ public class NotNullEvaluationTest {
         assertTrue(evaluation.isValid("Alex"));
         assertTrue(evaluation.isValid(new ArrayList<>()));
         assertFalse(evaluation.isValid(null));
-    }
-
-    @Test
-    public void errorMessageTest() {
-        assertEquals("Cannot be null", evaluation.getErrorMessage());
     }
 
 }

@@ -11,11 +11,11 @@ public class CustomValidation extends ValidationChain {
     @Override
     public void validate(Annotation annotation, Item item) {
         if (annotation.annotationType() == CustomValidator.class) {
-            Class<?> clazz = ((CustomValidator) annotation).value();
+            Class<?> clazz = ((CustomValidator) annotation).customClass();
             try {
                 Evaluation<Object> evaluation = instantiateEvaluation(clazz);
                 if (!evaluation.isValid(item.getValue())) {
-                    item.addErrorMessage(evaluation.getErrorMessage());
+                    item.addErrorMessage(((CustomValidator) annotation).message());
                 }
             } catch (Exception e) {
                 item.addErrorMessage(e.getMessage());

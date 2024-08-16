@@ -9,4 +9,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface Alpha {
 
+    String message() default "Must be all letters";
+    
 }

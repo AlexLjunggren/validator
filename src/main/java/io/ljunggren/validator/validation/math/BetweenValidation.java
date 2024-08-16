@@ -18,7 +18,7 @@ public class BetweenValidation extends ValidationChain {
             boolean inclusive = ((Between) annotation).inclusive();
             Evaluation<Number> evaluation = new BetweenEvaluation(minimum, maximum, inclusive);
             if (!evaluation.isValid(toNumber(item.getValue()))) {
-                item.addErrorMessage(evaluation.getErrorMessage());
+                item.addErrorMessage(((Between) annotation).message());
             }
         }
         nextChain.validate(annotation, item);

@@ -9,16 +9,13 @@ import io.ljunggren.validator.evaluation.RegexEvaluation;
 
 public class RegexValidation extends ValidationChain {
 
-    private Class<?> annotationClass = Regex.class;
-    
-
     @Override
     public void validate(Annotation annotation, Item item) {
-        if (annotation.annotationType() == annotationClass && isString(item.getField())) {
-            String regex = ((Regex) annotation).value();
+        if (annotation.annotationType() == Regex.class && isString(item.getField())) {
+            String regex = ((Regex) annotation).regex();
             Evaluation<String> evaluation = new RegexEvaluation(regex);
             if (!evaluation.isValid(toString(item.getValue()))) {
-                item.addErrorMessage(evaluation.getErrorMessage());
+                item.addErrorMessage(((Regex) annotation).message());
             }
         }
         nextChain.validate(annotation, item);

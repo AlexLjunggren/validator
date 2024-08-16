@@ -18,9 +18,4 @@ public class GreaterThanEvaluation implements Evaluation<Number> {
         return value.doubleValue() > minimum.doubleValue();
     }
 
-    @Override
-    public String getErrorMessage() {
-        return String.format("Must be greater than %s", minimum.toString());
-    }
-    
 }

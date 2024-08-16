@@ -1,7 +1,6 @@
 package io.ljunggren.validator.validation;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -27,11 +26,4 @@ public class OptionalValidationTest {
         assertEquals(0, validator.getInvalidItems().size());
     }
     
-    @Test
-    public void templateTest() {
-        Validator validator = new Validator(new OptionalPojo("Alex")).template();
-        assertFalse(validator.isValid());
-        assertEquals(1, validator.getInvalidItems().size());
-    }
-
 }

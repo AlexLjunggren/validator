@@ -10,14 +10,13 @@ import io.ljunggren.validator.evaluation.NotEmptyEvaluation;
 
 public class NotEmptyValidation extends ValidationChain {
 
-    private Class<?> annotationClass = NotEmpty.class;
     private Evaluation<Object> evaluation = new NotEmptyEvaluation();
 
     @Override
     public void validate(Annotation annotation, Item item) {
-        if (annotation.annotationType() == annotationClass && canHandleType(item)) {
+        if (annotation.annotationType() == NotEmpty.class && canHandleType(item)) {
             if (!evaluation.isValid(item.getValue())) {
-                item.addErrorMessage(evaluation.getErrorMessage());
+                item.addErrorMessage(((NotEmpty) annotation).message());
             }
         }
         nextChain.validate(annotation, item);

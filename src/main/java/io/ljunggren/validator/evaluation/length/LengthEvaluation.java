@@ -15,9 +15,4 @@ public class LengthEvaluation implements Evaluation<String> {
         return value == null ? false : value.length() == length;
     }
 
-    @Override
-    public String getErrorMessage() {
-        return String.format("Must be of length %d", length);
-    }
-
 }

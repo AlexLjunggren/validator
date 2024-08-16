@@ -16,7 +16,7 @@ public class NotBetweenValidationTest {
     @AllArgsConstructor
     @Data
     private class NotBetweenPojo {
-        @NotBetween(minimum = 3, maximum = 4)
+        @NotBetween(minimum = 3, maximum = 4, message = "Cannot be between 3 and 4")
         private Double gpa;
     }
 
@@ -46,7 +46,7 @@ public class NotBetweenValidationTest {
     @AllArgsConstructor
     @Data
     private class NotBetweenInclusivePojo {
-        @NotBetween(minimum = 3, maximum = 4, inclusive = true)
+        @NotBetween(minimum = 3, maximum = 4, inclusive = true, message = "Cannot be between 3 and 4 inclusively")
         private double gpa;
     }
 

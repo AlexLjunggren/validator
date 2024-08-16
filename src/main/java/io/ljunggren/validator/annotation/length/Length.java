@@ -10,5 +10,6 @@ import java.lang.annotation.Target;
 public @interface Length {
 
 	int value();
+    String message();
 	
 }

@@ -11,5 +11,6 @@ public @interface StartsWith {
 
     String text();
     boolean caseSensitive() default true;
+    String message();
     
 }

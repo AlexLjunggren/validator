@@ -1,6 +1,5 @@
 package io.ljunggren.validator.evaluation.string;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -26,9 +25,4 @@ public class StartsWithEvaluationTest {
         assertFalse(new StartsWithEvaluation(null, false).isValid("This was coded by Alex"));
     }
     
-    @Test
-    public void errorMessageTest() {
-        assertEquals("Must start with Alex", new StartsWithEvaluation("Alex", true).getErrorMessage());
-    }
-
 }

@@ -17,13 +17,13 @@ public class LengthValidationTest {
     @AllArgsConstructor
     @Data
     private class LengthPojo {
-        @Length(4)
+        @Length(value = 4, message = "Must be of length 4")
         private String name;
 
-        @Length(5)
+        @Length(value = 5, message = "Must be of length 5")
         private Integer zipCode;
 
-        @Length(6)
+        @Length(value = 6, message = "Must be of length 6")
         private long salary;
     }
 
